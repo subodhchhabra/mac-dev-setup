@@ -27,6 +27,7 @@ If you have any comments or suggestions, feel free to give me a shout [on Twitte
 - [Heroku](#heroku)
 - [MongoDB](#mongodb)
 - [Redis](#redis)
+- [PostgreSQL](#postgresql)
 - [Projects folder](#projects-folder)
 - [Apps](#apps)
 
@@ -735,6 +736,38 @@ In another terminal, connect to the server with the Redis command-line interface
     $ redis-cli
 
 I'll let you refer to Redis' [documentation](http://redis.io/documentation) or other tutorials for more information.
+
+
+## PostgreSQL
+
+[PostgreSQL](http://www.postgresql.org/) is a powerful, open source object-relational database system.
+
+### Install
+
+To install Redis, use Homebrew:
+
+    $ brew update
+    $ brew install postgresql
+
+### Create/Upgrade a database
+If this is your first time installing Postgres with Homebrew, you’ll need to create a database with:
+
+    $ initdb /usr/local/var/postgres -E utf8
+
+### Usage
+
+Start a local PostgreSQL server using the default configuration settings with:
+
+    $ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+Stop the PostgreSQL server:
+
+    $ pg_ctl -D /usr/local/var/postgres stop -s -m fast
+
+Or you can create two aliases in your bash_profile with the following:
+
+    alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+    alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 
 ## Projects folder
 
