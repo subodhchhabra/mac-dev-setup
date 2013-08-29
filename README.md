@@ -335,7 +335,7 @@ Next, if you do not currently have a ```~/Sites``` directory, create one. Then m
 ### Virtual Hosts
 Unless you will only ever be working on a single site, you need a way to have multiple sites available. A convenient way is to create local DNS entries and virtual hosts.
 
-First of all you’ll need a way to enter local DNS entries – yoursite.dev, test.local or whatever you prefer. You can add as many entries as you need by editing the /etc/hosts file:
+First of all you’ll need a way to enter local DNS entries – yoursite.dev, test.local or whatever you prefer. You can add as many entries as you need by editing the ```/etc/hosts``` file:
 
     127.0.0.1             localhost
     255.255.255.255       broadcasthost
