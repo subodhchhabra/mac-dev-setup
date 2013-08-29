@@ -28,7 +28,6 @@ If you have any comments or suggestions, feel free to give me a shout [on Twitte
 - [MongoDB](#mongodb)
 - [Redis](#redis)
 - [PostgreSQL](#postgresql)
-- [Projects folder](#projects-folder)
 - [Apps](#apps)
 
 ## System update
@@ -769,9 +768,6 @@ Or you can create two aliases in your bash_profile with the following:
     alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
     alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 
-## Projects folder
-
-This really depends on how you want to organize your files, but I like to put all my version-controlled projects in `~/Projects`. Other documents I may have, or things not yet under version control, I like to put in `~/Dropbox` (if you have Dropbox installed), or `~/Documents`.
 
 ## Apps
 
@@ -779,10 +775,9 @@ Here is a quick list of some apps I use, and that you might find useful as well:
 
 - [Dropbox](https://www.dropbox.com/): File syncing to the cloud. I put all my documents in Dropbox. It syncs them to all my devices (laptop, mobile, tablet), and serves as a backup as well! **(Free for 2GB)**
 - [Google Drive](https://drive.google.com/): File syncing to the cloud too! I use Google Docs a lot to collaborate with others (edit a document with multiple people in real-time!), and sometimes upload other non-Google documents (pictures, etc.), so the app comes in handy for that. **(Free for 5GB)**
-- [1Password](https://agilebits.com/onepassword): Allows you to securely store your login and passwords. Even if you only use a few different passwords (they say you shouldn't!), this is really handy to keep track of all the accounts you sign up for! Also, they have a mobile app so you always have all your passwords with you (syncs with Dropbox). A little pricey though. There are free alternatives. **($50 for Mac app, $18 for iOS app)**
-- [Marked](http://markedapp.com/): As a developer, most of the stuff you write ends up being in [Markdown](http://daringfireball.net/projects/markdown/). In fact, this `README.md` file (possibly the most important file of a GitHub repo) is indeed in Markdown, written in Sublime Text, and I use Marked to preview the results everytime I save. **($4)**
-- [Path Finder](http://cocoatech.com/pathfinder/): I love OSX, it's Unix so great for developers, and all of it just works and looks pretty! Only thing I "miss" from Windows (OMG what did he say?), is a decent file explorer. I think Finder is a pain to use. So I gladly paid for this alternative, but I understand others might find it expensive just to not have to use Finder. **($40)**
-- [Evernote](https://evernote.com/): If I don't write something down, I'll forget it. As a developer, you learn so many new things every day, and technology keeps changing, it would be insane to want to keep it all in your head. So take notes, sync them to the cloud, and have them on all your devices. To be honest, I switched to [Simplenote](http://simplenote.com/) because I only take text notes, and I got tired of Evernote putting extra spaces between paragraphs when I copy & pasted into other applications. Simplenote is so much better for text notes (and it supports Markdown!). **(Both are free)**
-- [Moom](http://manytricks.com/moom/): Don't waste time resizing and moving your windows. Moom makes this very easy. **($10)**
-
+- [ColorSnapper](http://colorsnapper.com/): An easy-to-use tool for quickly finding out the color of any pixel on the screen. It is activated via a system-wide hotkey, giving you a magnifying loupe to easily pick the pixel you need. The resulting color is copied to clipboard in a format of your preference. **($4.99)**
+- [Transmit](http://panic.com/transmit/): The #1 Mac OS X FTP client. Transfer files to to an FTP or SFTP server, or the cloud via Amazon S3, or using WebDAV. **($34)**
+- [SequelPro](http://www.sequelpro.com/): A fast, easy-to-use Mac database management application for working with MySQL databases. **(Free)**
+- [pgAdmin](http://www.pgadmin.org/): Basically SequelPro but for PostgreSQL. The most popular and feature rich Open Source administration and development platform for PostgreSQL. **(Free)**
+ 
 
