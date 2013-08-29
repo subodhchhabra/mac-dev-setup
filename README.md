@@ -1,10 +1,9 @@
 # Mac OS X Dev Setup
 
-This document describes how I set up my developer environment on a new MacBook or iMac. We will set up [Node](http://nodejs.org/) (JavaScript), [Python](http://www.python.org/), and [Ruby](http://www.ruby-lang.org/) environments, mainly for JavaScript and Python development. Even if you don't program in all three, it is good to have them as many command-line tools use one of them. As you read  and follow these steps, feel free to send me any feedback or comments you may have.
+This document describes how I set up my developer environment on a new MacBook or iMac. We will set up [Node](http://nodejs.org/) (JavaScript), [PHP](http://www.php.net/), [Python](http://www.python.org/), and [Ruby](http://www.ruby-lang.org/) environments.
 
 The document assumes you are new to Mac. The steps below were tested on **OS X Mountain Lion**.
 
-If you have any comments or suggestions, feel free to give me a shout [on Twitter](https://twitter.com/nicolahery)!
 
 - [System update](#system-update)
 - [System preferences](#system-preferences)
@@ -16,6 +15,7 @@ If you have any comments or suggestions, feel free to give me a shout [on Twitte
 - [Git](#git)
 - [Sublime Text](#sublime-text)
 - [Vim](#vim)
+- [PHP](#php)
 - [Python](#python)
 - [Virtualenv](#virtualenv)
 - [IPython](#ipython)
@@ -316,6 +316,48 @@ And finally, install the Vim "sensible defaults" by running:
     $ git clone git://github.com/tpope/vim-sensible.git
 
 With that, Vim will look a lot better next time you open it!
+
+
+## PHP
+OS X, like Linux, ships with [PHP](http://php.net/) already installed. However to run PHP apps locally you will have to make a few tweaks.
+
+First, in your ```/etc/apache2/httpd.conf``` file make sure ```LoadModule php5_module libexec/apache2/libphp5.so``` is not commented out.
+
+Next, if you do not currently have a ```~/Sites``` directory, create one. Then make sure you have a file in ```/etc/apache2/users/``` that is named after your computer. For example my computer is named "macinator" so I have a ```macinator.conf``` file that looks like the following:
+
+    <Directory "/Users/macinator/Sites">
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+### Virtual Hosts
+Unless you will only ever be working on a single site, you need a way to have multiple sites available. A convenient way is to create local DNS entries and virtual hosts.
+
+First of all you’ll need a way to enter local DNS entries – yoursite.dev, test.local or whatever you prefer. You can add as many entries as you need by editing the /etc/hosts file:
+
+    127.0.0.1             localhost
+    255.255.255.255       broadcasthost
+    ::1                   localhost 
+    fe80::1%lo0           localhost
+    127.0.0.1             jess.dev
+    127.0.0.1             blog-project.dev
+    
+Next create the virtual hosts in ```/etc/apache2/extra/httpd-vhosts.conf```:
+
+    NameVirtualHost *:80
+    <VirtualHost *:80>
+        ServerName jess.dev
+        DocumentRoot "/Volumes/Master/macinator/Sites/"
+    </VirtualHost>
+    <VirtualHost *:80>
+        ServerName blog-project.dev
+        DocumentRoot "/Volumes/Master/macinator/Sites/blog-project"
+    </VirtualHost>
+    
+Restart Apache ```sudo apachectl restart``` and you are good to go.
+
 
 ## Python
 
