@@ -19,7 +19,8 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Python](#python)
 - [Virtualenv](#virtualenv)
 - [IPython](#ipython)
-- [Numpy and Scipy](#numpy-and-scipy)
+- [Numpy, Scipy, matplotlib, and scikit-learn](#numpy-scipy-matplotlib-and-scikit-learn)
+- [R](#r)
 - [MySQL](#mysql)
 - [Node.js](#nodejs)
 - [Ruby and RVM](#ruby-and-rvm)
@@ -481,25 +482,60 @@ Open a fresh terminal. Now when you run `$ ipy`, it will launch the QT Console w
 
 To use the in-line Matplotlib functionality (nice for scientific computing), run `$ ipy --pylab=inline`.
 
-## Numpy and Scipy
+## Numpy, Scipy, matplotlib, and scikit-learn
 
 The [Numpy](http://numpy.scipy.org/) and [Scipy](http://www.scipy.org/SciPy) scientific libraries for Python are always a little tricky to install from source because they have all these dependencies they need to build correctly. Luckily for us, [Samuel John](http://www.samueljohn.de/) has put together some [Homebrew formulae](https://github.com/samueljohn/homebrew-python) to make it easier to install these Python libraries.
 
 First, grab the special formulae (which are not part of Homebrew core):
 
-    $ brew tap samueljohn/python
     $ brew tap homebrew/science
     
 Then, install the `gfortran` dependency which we will need to build the libraries:
 
     $ brew install gfortran
     
-Finally, you can install Numpy and Scipy with:
+You can install Numpy with:
 
-    $ brew install numpy
-    $ brew install scipy
+    $ pip install numpy
+
+Test your Numpy installation:
+
+    $ python
+    import numpy
+    print numpy.__version__
+    print numpy.__file__
+    quit()
+
+You can install Scipy with:
+
+    $ pip install scipy
     
-(It may take a few minutes to build.)
+Test your Scipy installation:
+
+    $ python
+    import scipy
+    print scipy.__version__
+    print scipy.__file__
+    quit()
+
+Then install matplotlib
+
+    $ pip install matplotlib
+    
+(All three of these may take a few minutes to download.)
+    
+## R
+
+R is a software environment for statistical computing and graphics.
+
+Install [XQuartz](https://xquartz.macosforge.org/landing/). This relies on you tapping ```brew tap homebrew/science``` and ```brew install gfortran``` from above.
+
+    $ brew install r
+
+To test your installation:
+
+    $ r
+
 
 ## MySQL
 
