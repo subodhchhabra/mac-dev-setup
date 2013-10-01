@@ -540,6 +540,20 @@ Install [XQuartz](https://xquartz.macosforge.org/landing/). This relies on you t
 To test your installation:
 
     $ r
+    > x <- 4+5
+    > x
+    [1] 9
+    >
+    > addup <- function(a, b=10)
+    + {
+    + return (a+b)
+    + }
+    > addup(4,5)
+    [1] 9
+
+When you're done, quit the R console:
+
+    > q()
 
 
 ## MySQL
