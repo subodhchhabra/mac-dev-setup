@@ -874,6 +874,6 @@ Here is a quick list of some apps I use, and that you might find useful as well:
 - [ColorSnapper](http://colorsnapper.com/): An easy-to-use tool for quickly finding out the color of any pixel on the screen. It is activated via a system-wide hotkey, giving you a magnifying loupe to easily pick the pixel you need. The resulting color is copied to clipboard in a format of your preference. **($4.99)**
 - [Transmit](http://panic.com/transmit/): The #1 Mac OS X FTP client. Transfer files to to an FTP or SFTP server, or the cloud via Amazon S3, or using WebDAV. **($34)**
 - [SequelPro](http://www.sequelpro.com/): A fast, easy-to-use Mac database management application for working with MySQL databases. **(Free)**
-- [pgAdmin](http://www.pgadmin.org/): Basically SequelPro but for PostgreSQL. The most popular and feature rich Open Source administration and development platform for PostgreSQL. **(Free)**
+
  
 
