@@ -484,7 +484,7 @@ To use the in-line Matplotlib functionality (nice for scientific computing), run
 
 ## Numpy, Scipy, matplotlib, and scikit-learn
 
-The [Numpy](http://numpy.scipy.org/) and [Scipy](http://www.scipy.org/SciPy) scientific libraries for Python are always a little tricky to install from source because they have all these dependencies they need to build correctly. Luckily for us, [Samuel John](http://www.samueljohn.de/) has put together some [Homebrew formulae](https://github.com/samueljohn/homebrew-python) to make it easier to install these Python libraries.
+[Numpy](http://numpy.scipy.org/), [Scipy](http://www.scipy.org/SciPy), [matplotlib](http://matplotlib.org/), and [scikit-learn](http://scikit-learn.org/stable/) are scientific libraries for Python and are always a little tricky to install from source because they have all these dependencies they need to build correctly. Luckily for us, [Samuel John](http://www.samueljohn.de/) has put together some [Homebrew formulae](https://github.com/samueljohn/homebrew-python) to make it easier to install these Python libraries.
 
 First, grab the special formulae (which are not part of Homebrew core):
 
@@ -523,6 +523,11 @@ Then install matplotlib
     $ pip install matplotlib
     
 (All three of these may take a few minutes to download.)
+
+Then install scikit-learn:
+
+    $ pip install -U scikit-learn
+
     
 ## R
 
