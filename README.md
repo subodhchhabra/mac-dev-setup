@@ -480,7 +480,18 @@ alias ipy='ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWid
     
 Open a fresh terminal. Now when you run `$ ipy`, it will launch the QT Console with your configured options.
 
-To use the in-line Matplotlib functionality (nice for scientific computing), run `$ ipy --pylab=inline`.
+To use the in-line Matplotlib functionality (nice for scientific computing), run:
+
+    $ ipy --pylab=inline
+
+To be able to run inline videos install:
+
+    $ brew install ffmpeg
+    
+If you are getting an error message when running iPython with the following:
+> Python History requires SQLite, your history will not be saved.
+
+.. and you know you have sqlite installed, run `brew rm sqlite python` then `brew install python` and the error will be fixed.
 
 ## Numpy, Scipy, matplotlib, and scikit-learn
 
