@@ -8,16 +8,13 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [System update](#system-update)
 - [System preferences](#system-preferences)
 - [Google Chrome](#google-chrome)
-- [iTerm2](#iterm2)
 - [Homebrew](#homebrew)
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
 - [Git](#git)
-- [Sublime Text](#sublime-text)
 - [Vim](#vim)
 - [PHP](#php)
 - [Python](#python)
-- [Virtualenv](#virtualenv)
 - [IPython](#ipython)
 - [Numpy, Scipy, matplotlib, and scikit-learn](#numpy-scipy-matplotlib-and-scikit-learn)
 - [R](#r)
@@ -29,6 +26,10 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Redis](#redis)
 - [PostgreSQL](#postgresql)
 - [Apps](#apps)
+- [Things from fork I dont use personally](#Things-from-fork-I-dont-use-personally)
+    - [Pyton Virtualenv](#python-virtualenv)
+    - [iTerm2](#iterm2)
+    - [Sublime Text](#sublime-text)
 
 ## System update
 
@@ -51,19 +52,6 @@ Install your favorite browser, mine happens to be Chrome.
 
 Download from [www.google.com/chrome](https://www.google.com/intl/en/chrome/browser/). Open the **.dmg** file once it's done downloading (this will mount the disk image), and drag and drop the **Google Chrome** app into the Applications folder (on the Mac, most applications are installed this way). When done, you can unmount the disk in Finder (the small "eject" icon next to the disk under **Devices**).
 
-## iTerm2
-
-Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/) (the newest version, even if it says "beta release").
-
-In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
-
-You can now launch iTerm, through the **Launchpad** for instance.
-
-Let's just quickly change some preferences. In **iTerm > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
-
-In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
-
-When done, hit the red "X" in the upper left (saving is automatic in OS X preference panes). Close the window and open a new one to see the size change.
 
 ## Homebrew
 
@@ -144,14 +132,19 @@ And click **Install Font**. Thanks to Alexander Zhuravlev for his [post](http://
 
 Since we spend so much time in the terminal, we should try to make it a more pleasant and colorful place. What follows might seem like a lot of work, but trust me, it'll make the development experience so much better.
 
-Let's go ahead and start by changing the font. In **iTerm > Preferences...**, under the tab **Profiles**, section **Text**, change both fonts to **Consolas 13pt**.
+### Add theme
+Let's add some color. I'm a big fan of the [Solarized](http://ethanschoonover.com/solarized) color scheme. It is supposed to be scientifically optimal for the eyes. I just find it pretty.
 
-Now let's add some color. I'm a big fan of the [Solarized](http://ethanschoonover.com/solarized) color scheme. It is supposed to be scientifically optimal for the eyes. I just find it pretty.
+Scroll down the page and download the latest version. Unzip the archive. In it you will find the `osx-terminal.app-colors-solarized` folder with a `README.md` file, but I will just walk you through it here:
 
-Scroll down the page and download the latest version. Unzip the archive. In it you will find the `iterm2-colors-solarized` folder with a `README.md` file, but I will just walk you through it here:
+- In **Terminal > Preferences**, under **Settings**, cclick the cog at the bottom left to **Import**, find and open the two **.terminal** files we downloaded.
+- Go back to **Settings** and select **Solarized Dark** to activate it, hit **Default** to make it the default theme. Voila!
 
-- In **iTerm2 Preferences**, under **Profiles** and **Colors**, go to **Load Presets... > Import...**, find and open the two **.itermcolors** files we downloaded.
-- Go back to **Load Presets...** and select **Solarized Dark** to activate it. Voila!
+### Change the font
+
+Let's go ahead and change the font. In **Terminal > Preferences...**, under the tab **Settings**, section **Text**, change both fonts to **Consolas 13pt**.
+
+### Customizations
 
 **Note**: You don't have to do this, but there is one color in the **Solarized Dark** preset I don't agree with, which is *Bright Black*. You'll notice it's too close to *Black*. So I change it to be the same as *Bright Yellow*, i.e. **R 83 G 104 B 112**.
 
@@ -213,108 +206,24 @@ Type into terminal:
     
 Running ```git lg``` shows the pretty log and ```git lg -p``` shows the lines that changed.
 
-    
-## Sublime Text
-
-With the terminal, the text editor is a developer's most important tool. Everyone has their preferences, but unless you're a hardcore [Vim](http://en.wikipedia.org/wiki/Vim_(text_editor)) user, a lot of people are going to tell you that [Sublime Text](http://www.sublimetext.com/) is currently the best one out there.
-
-Go ahead and [download](http://www.sublimetext.com/) it. Open the **.dmg** file, drag-and-drop in the **Applications** folder, you know the drill now. Launch the application.
-
-**Note**: At this point I'm going to create a shorcut on the OS X Dock for both for Sublime Text and iTerm. To do so, right-click on the running application and select **Options > Keep in Dock**.
-
-Sublime Text is not free, but I think it has an unlimited "evaluation period". Anyhow, we're going to be using it so much that even the seemingly expensive $60 price tag is worth every penny. If you can afford it, I suggest you [support](http://www.sublimetext.com/buy) this awesome tool. :)
-
-Just like the terminal, let's configure our editor a little. Go to **Sublime Text 2 > Preferences > Settings - User** and paste the following in the file that just opened:
-
-```json
-{
-    "font_face": "Consolas",
-    "font_size": 13,
-    "rulers":
-    [
-        79
-    ],
-    "highlight_line": true,
-    "bold_folder_labels": true,
-    "highlight_modified_tabs": true,
-    "tab_size": 2,
-    "translate_tabs_to_spaces": true,
-    "word_wrap": false,
-    "indent_to_bracket": true
-}
-```
-    
-Feel free to tweak these to your preference. When done, save the file and close it.
-
-I use tab size 2 for everything except Python and Markdown files, where I use tab size 4. If you have a Python and Markdown file handy (or create dummy ones with `$ touch dummy.py`), for each one, open it and go to **Sublime Text 2 > Preferences > Settings - More > Syntax Specific - User** to paste in:
-
-```json
-{
-    "tab_size": 4
-}
-```
-
-Now for the color. I'm going to change two things: the **Theme** (which is how the tabs, the file explorer on the left, etc. look) and the **Color Scheme** (the colors of the code). Again, feel free to pick different ones, or stick with the default.
-
-A popular Theme is the [Soda Theme](https://github.com/buymeasoda/soda-theme). To install it, run:
-
-    $ cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
-    $ git clone https://github.com/buymeasoda/soda-theme/ "Theme - Soda"
-    
-Then go to **Sublime Text 2 > Preferences > Settings - User** and add the following two lines:
-
-    "theme": "Soda Dark.sublime-theme",
-    "soda_classic_tabs": true
-
-Restart Sublime Text for all changes to take affect (Note: on the Mac, closing all windows doesn't close the application, you need to hit **Cmd+Q**).
-
-The Soda Theme page also offers some [extra color schemes](https://github.com/buymeasoda/soda-theme#syntax-highlighting-colour-schemes) you can download and try. But to be consistent with my terminal, I like to use the **Solarized** Color Scheme, which already ships with Sublime Text. To use it, just go to **Sublime Text 2 > Preferences > Color Scheme > Solarized (Dark)**. Again, this is really according to personal flavors, so pick what you want.
-
-Sublime Text 2 already supports syntax highlighting for a lot of languages. I'm going to install a couple that are missing:
-
-    $ cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
-    $ git clone https://github.com/jashkenas/coffee-script-tmbundle CoffeeScript
-    $ git clone https://github.com/miksago/jade-tmbundle Jade
-    $ git clone https://github.com/danro/LESS-sublime.git LESS
-    $ git clone -b SublimeText2 https://github.com/kuroir/SCSS.tmbundle.git SCSS
-    $ git clone https://github.com/nrw/sublime-text-handlebars Handlebars
-
-Let's create a shortcut so we can launch Sublime Text from the command-line:
-
-    $ cd ~
-    $ mkdir bin
-    $ ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
-
-Now I can open a file with `$ subl myfile.py` or start a new project in the current directory with `$ subl .`. Pretty cool.
-
-Sublime Text is very extensible. For now we'll leave it like that, we already have a solid installation. To add more in the future, a good place to start would be to install the [Sublime Package Control](http://wbond.net/sublime_packages/package_control/installation).
 
 ## Vim
 
-Although Sublime Text will be our main editor, it is a good idea to learn some very basic usage of [Vim](http://www.vim.org/). It is a very popular text editor inside the terminal, and is usually pre-installed on any Unix system.
+My favorite text-editor is [Vim](http://www.vim.org/). It is a very popular text editor inside the terminal, and is usually pre-installed on any Unix system.
 
 For example, when you run a Git commit, it will open Vim to allow you to type the commit message.
 
 I suggest you read a tutorial on Vim. Grasping the concept of the two "modes" of the editor, **Insert** (by pressing `i`) and **Normal** (by pressing `Esc` to exit Insert mode), will be the part that feels most unatural. After that it's just remembering a few important keys.
 
-Vim's default settings aren't great, and you could spend a lot of time tweaking your configuration (the `.vimrc` file). But if you're like me and just use Vim occasionally, you'll be happy to know that [Tim Pope](https://github.com/tpope) has put together some sensible defaults to quickly get started.
+Vim's default settings aren't great, and you could spend a lot of time tweaking your configuration (the `.vimrc` file).
 
-First, install [pathogen.vim](https://github.com/tpope/vim-pathogen) by running:
+I already did all the work for you [here](https://github.com/jfrazelle/.vim).
 
-    $ mkdir -p ~/.vim/autoload ~/.vim/bundle
-    $ curl -Sso ~/.vim/autoload/pathogen.vim \
-        https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+Install my .vim files by running:
 
-Then create a file `~/.vimrc` (you can use `$ subl ~/.vimrc`), and paste in the following:
-
-    execute pathogen#infect()
-    syntax on
-    filetype plugin indent on
-
-And finally, install the Vim "sensible defaults" by running:
-
-    $ cd ~/.vim/bundle
-    $ git clone git://github.com/tpope/vim-sensible.git
+    $ cd ~/
+    $ git clone git@github.com:jfrazelle/.vim.git .vim
+    $ mv .vim/vimrc.txt ~/.vimrc
 
 With that, Vim will look a lot better next time you open it!
 
@@ -407,42 +316,6 @@ To uninstall a package:
 
     $ pip uninstall <package>
 
-## Virtualenv
-
-[Virtualenv](http://www.virtualenv.org/) is a tool that creates an isolated Python environment for each of your projects. For a particular project, instead of installing required packages globally, it is best to install them in an isolated folder in the project (say a folder named `venv`), that will be managed by virtualenv.
-
-The advantage is that different projects might require different versions of packages, and it would be hard to manage that if you install packages globally. It also allows you to keep your global `/usr/local/lib/python2.7/site-packages` folder clean, containing only critical or big packages that you always need (like IPython, Numpy).
-
-### Install
-
-To install virtualenv, simply run:
-
-    $ pip install virtualenv
-
-### Usage
-
-Let's say you have a project in a directory called `myproject`. To set up virtualenv for that project:
-
-    $ cd myproject/
-    $ virtualenv venv --distribute
-    
-If you want your virtualenv to also inherit globally installed packages (like IPython or Numpy mentioned above), use:
-
-    $ virtualenv venv --distribute --system-site-packages
-
-These commands create a `venv` subdirectory in your project where everything is installed. You need to **activate** it first though (in every terminal where you are working on your project):
-
-    $ source venv/bin/activate
-    
-You should see a `(venv)` appear at the beginning of your terminal prompt indicating that you are working inside the virtualenv. Now when you install something:
-
-    $ pip install <package>
-
-It will get installed in the `venv` folder, and not conflict with other projects.
-
-**Important**: Remember to add `venv` to your project's `.gitignore` file so you don't include all of that in your source code!
-
-As mentioned earlier, I like to install big packages (like Numpy), or packages I always use (like IPython) globally. All the rest I install in a virtualenv.
 
 ## IPython
 
@@ -886,5 +759,133 @@ Here is a quick list of some apps I use, and that you might find useful as well:
 - [Transmit](http://panic.com/transmit/): The #1 Mac OS X FTP client. Transfer files to to an FTP or SFTP server, or the cloud via Amazon S3, or using WebDAV. **($34)**
 - [SequelPro](http://www.sequelpro.com/): A fast, easy-to-use Mac database management application for working with MySQL databases. **(Free)**
 
+
+## Things from fork I dont use personally
+
+### Python Virtualenv
+
+[Virtualenv](http://www.virtualenv.org/) is a tool that creates an isolated Python environment for each of your projects. For a particular project, instead of installing required packages globally, it is best to install them in an isolated folder in the project (say a folder named `venv`), that will be managed by virtualenv.
+
+The advantage is that different projects might require different versions of packages, and it would be hard to manage that if you install packages globally. It also allows you to keep your global `/usr/local/lib/python2.7/site-packages` folder clean, containing only critical or big packages that you always need (like IPython, Numpy).
+
+#### Install
+
+To install virtualenv, simply run:
+
+    $ pip install virtualenv
+
+#### Usage
+
+Let's say you have a project in a directory called `myproject`. To set up virtualenv for that project:
+
+    $ cd myproject/
+    $ virtualenv venv --distribute
+    
+If you want your virtualenv to also inherit globally installed packages (like IPython or Numpy mentioned above), use:
+
+    $ virtualenv venv --distribute --system-site-packages
+
+These commands create a `venv` subdirectory in your project where everything is installed. You need to **activate** it first though (in every terminal where you are working on your project):
+
+    $ source venv/bin/activate
+    
+You should see a `(venv)` appear at the beginning of your terminal prompt indicating that you are working inside the virtualenv. Now when you install something:
+
+    $ pip install <package>
+
+It will get installed in the `venv` folder, and not conflict with other projects.
+
+**Important**: Remember to add `venv` to your project's `.gitignore` file so you don't include all of that in your source code!
+
+As mentioned earlier, I like to install big packages (like Numpy), or packages I always use (like IPython) globally. All the rest I install in a virtualenv.
+
+### iTerm2
+
+Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/) (the newest version, even if it says "beta release").
+
+In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
+
+You can now launch iTerm, through the **Launchpad** for instance.
+
+Let's just quickly change some preferences. In **iTerm > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
+
+In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
+
+When done, hit the red "X" in the upper left (saving is automatic in OS X preference panes). Close the window and open a new one to see the size change.
+
+### Sublime Text
+
+With the terminal, the text editor is a developer's most important tool. Everyone has their preferences, but unless you're a hardcore [Vim](http://en.wikipedia.org/wiki/Vim_(text_editor)) user, a lot of people are going to tell you that [Sublime Text](http://www.sublimetext.com/) is currently the best one out there.
+
+Go ahead and [download](http://www.sublimetext.com/) it. Open the **.dmg** file, drag-and-drop in the **Applications** folder, you know the drill now. Launch the application.
+
+**Note**: At this point I'm going to create a shorcut on the OS X Dock for both for Sublime Text and iTerm. To do so, right-click on the running application and select **Options > Keep in Dock**.
+
+Sublime Text is not free, but I think it has an unlimited "evaluation period". Anyhow, we're going to be using it so much that even the seemingly expensive $60 price tag is worth every penny. If you can afford it, I suggest you [support](http://www.sublimetext.com/buy) this awesome tool. :)
+
+Just like the terminal, let's configure our editor a little. Go to **Sublime Text 2 > Preferences > Settings - User** and paste the following in the file that just opened:
+
+```json
+{
+    "font_face": "Consolas",
+    "font_size": 13,
+    "rulers":
+    [
+        79
+    ],
+    "highlight_line": true,
+    "bold_folder_labels": true,
+    "highlight_modified_tabs": true,
+    "tab_size": 2,
+    "translate_tabs_to_spaces": true,
+    "word_wrap": false,
+    "indent_to_bracket": true
+}
+```
+    
+Feel free to tweak these to your preference. When done, save the file and close it.
+
+I use tab size 2 for everything except Python and Markdown files, where I use tab size 4. If you have a Python and Markdown file handy (or create dummy ones with `$ touch dummy.py`), for each one, open it and go to **Sublime Text 2 > Preferences > Settings - More > Syntax Specific - User** to paste in:
+
+```json
+{
+    "tab_size": 4
+}
+```
+
+Now for the color. I'm going to change two things: the **Theme** (which is how the tabs, the file explorer on the left, etc. look) and the **Color Scheme** (the colors of the code). Again, feel free to pick different ones, or stick with the default.
+
+A popular Theme is the [Soda Theme](https://github.com/buymeasoda/soda-theme). To install it, run:
+
+    $ cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
+    $ git clone https://github.com/buymeasoda/soda-theme/ "Theme - Soda"
+    
+Then go to **Sublime Text 2 > Preferences > Settings - User** and add the following two lines:
+
+    "theme": "Soda Dark.sublime-theme",
+    "soda_classic_tabs": true
+
+Restart Sublime Text for all changes to take affect (Note: on the Mac, closing all windows doesn't close the application, you need to hit **Cmd+Q**).
+
+The Soda Theme page also offers some [extra color schemes](https://github.com/buymeasoda/soda-theme#syntax-highlighting-colour-schemes) you can download and try. But to be consistent with my terminal, I like to use the **Solarized** Color Scheme, which already ships with Sublime Text. To use it, just go to **Sublime Text 2 > Preferences > Color Scheme > Solarized (Dark)**. Again, this is really according to personal flavors, so pick what you want.
+
+Sublime Text 2 already supports syntax highlighting for a lot of languages. I'm going to install a couple that are missing:
+
+    $ cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
+    $ git clone https://github.com/jashkenas/coffee-script-tmbundle CoffeeScript
+    $ git clone https://github.com/miksago/jade-tmbundle Jade
+    $ git clone https://github.com/danro/LESS-sublime.git LESS
+    $ git clone -b SublimeText2 https://github.com/kuroir/SCSS.tmbundle.git SCSS
+    $ git clone https://github.com/nrw/sublime-text-handlebars Handlebars
+
+Let's create a shortcut so we can launch Sublime Text from the command-line:
+
+    $ cd ~
+    $ mkdir bin
+    $ ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+
+Now I can open a file with `$ subl myfile.py` or start a new project in the current directory with `$ subl .`. Pretty cool.
+
+Sublime Text is very extensible. For now we'll leave it like that, we already have a solid installation. To add more in the future, a good place to start would be to install the [Sublime Package Control](http://wbond.net/sublime_packages/package_control/installation).
  
 
