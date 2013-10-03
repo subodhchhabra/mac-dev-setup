@@ -26,7 +26,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Redis](#redis)
 - [PostgreSQL](#postgresql)
 - [Apps](#apps)
-- [Things from fork I dont use personally](#Things-from-fork-I-dont-use-personally)
+- [Things from fork I dont use personally](#things-from-fork-i-dont-use-personally)
     - [Pyton Virtualenv](#python-virtualenv)
     - [iTerm2](#iterm2)
     - [Sublime Text](#sublime-text)
