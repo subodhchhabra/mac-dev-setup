@@ -209,7 +209,7 @@ Running ```git lg``` shows the pretty log and ```git lg -p``` shows the lines th
 
 ## Vim
 
-My favorite text-editor is [Vim](http://www.vim.org/). It is a very popular text editor inside the terminal, and is usually pre-installed on any Unix system.
+My favorite text-editor is [Vim](http://www.vim.org/), however I use the [macvim](https://code.google.com/p/macvim/) version. It is a very popular text editor inside the terminal, and is usually pre-installed on any Unix system.
 
 For example, when you run a Git commit, it will open Vim to allow you to type the commit message.
 
