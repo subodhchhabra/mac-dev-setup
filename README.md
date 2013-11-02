@@ -150,15 +150,12 @@ Let's go ahead and change the font. In **Terminal > Preferences...**, under the 
 
 Not a lot of colors yet. We need to tweak a little bit our Unix user's profile for that. This is done (on OS X and Linux), in the `~/.bash_profile` text file (`~` stands for the user's home directory).
 
-We'll come back to the details of that later, but for now, just download the files [.bash_profile](/nicolahery/mac-dev-setup/blob/master/.bash_profile), [.bash_prompt](/nicolahery/mac-dev-setup/blob/master/.bash_prompt), [.aliases](/nicolahery/mac-dev-setup/blob/master/.aliases) attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others):
+We'll come back to the details of that later, but for now, just download the files [.bash_profile](/jfrazelle/mac-dev-setup/blob/master/.bash_profile), [.bash_prompt](/jfrazelle/mac-dev-setup/blob/master/.bash_prompt), attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others):
 
     $ cd ~
-    $ curl -O https://raw.github.com/nicolahery/mac-dev-setup/master/.bash_profile
-    $ curl -O https://raw.github.com/nicolahery/mac-dev-setup/master/.bash_prompt
-    $ curl -O https://raw.github.com/nicolahery/mac-dev-setup/master/.aliases
+    $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
+    $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_prompt
     
-With that, open a new terminal tab (Cmd+T) and see the change! Try the list commands: `ls`, `ls -lh` (aliased to `ll`), `ls -lha` (aliased to `la`).
-
 At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Nicolas's MacBook Air" to just "MacBook Air", so it shows up as `MacBook-Air` in the terminal.
 
 Now we have a terminal we can work with!
@@ -177,10 +174,10 @@ When done, to test that it installed fine you can run:
     
 And `$ which git` should output `/usr/local/bin/git`.
 
-Let's set up some basic configuration. Download the [.gitconfig](/nicolahery/mac-dev-setup/blob/master/.gitconfig) file to your home directory:
+Let's set up some basic configuration. Download the [.gitconfig](/jfrazelle/mac-dev-setup/blob/master/.gitconfig) file to your home directory:
 
     $ cd ~
-    $ curl -O https://raw.github.com/nicolahery/mac-dev-setup/master/.gitconfig
+    $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.gitconfig
 
 It will add some color to the `status`, `branch`, and `diff` Git commands, as well as a couple aliases. Feel free to take a look at the contents of the file, and add to it to your liking.
 
