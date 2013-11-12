@@ -15,5 +15,12 @@ alias ipy='ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWid
 alias hosts='sudo vim /etc/hosts'
 alias vhosts='sudo vim /etc/apache2/extra/httpd-vhosts.conf'
 
+# cleanup aliases
+# remove .DS_Store recursively
+alias rmdss='sudo find . -name '*.DS_Store' -type f -delete'
+# remove .swo recursively
+alias rmswo='sudo find . -name '*.swo' -type f -delete'
+# remove .swp recursively
+alias rmswp='sudo find . -name '*.swp' -type f -delete'
 
 source "/Volumes/Macintosh HD/Users/macinator/.bash_prompt"
