@@ -150,7 +150,7 @@ Let's go ahead and change the font. In **Terminal > Preferences...**, under the 
 
 Not a lot of colors yet. We need to tweak a little bit our Unix user's profile for that. This is done (on OS X and Linux), in the `~/.bash_profile` text file (`~` stands for the user's home directory).
 
-We'll come back to the details of that later, but for now, just download the files [.bash_profile](/jfrazelle/mac-dev-setup/blob/master/.bash_profile), [.bash_prompt](/jfrazelle/mac-dev-setup/blob/master/.bash_prompt), attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others):
+We'll come back to the details of that later, but for now, just download the files [.bash_profile](/jfrazelle/mac-dev-setup/blob/master/.bash_profile), [.bash_prompt](/jfrazelle/mac-dev-setup/blob/master/.bash_prompt), attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others, but you will need to change the last line to your path ```source "/Volumes/Macintosh HD/Users/macinator/.bash_prompt"```):
 
     $ cd ~
     $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
