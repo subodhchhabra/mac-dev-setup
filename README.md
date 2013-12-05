@@ -150,13 +150,14 @@ Let's go ahead and change the font. In **Terminal > Preferences...**, under the 
 
 Not a lot of colors yet. We need to tweak a little bit our Unix user's profile for that. This is done (on OS X and Linux), in the `~/.bash_profile` text file (`~` stands for the user's home directory).
 
-We'll come back to the details of that later, but for now, just download the files [.bash_profile](/jfrazelle/mac-dev-setup/blob/master/.bash_profile), [.bash_prompt](/jfrazelle/mac-dev-setup/blob/master/.bash_prompt), attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others, but you will need to change the last line to your path ```source "/Volumes/Macintosh HD/Users/macinator/.bash_prompt"```):
+We'll come back to the details of that later, but for now, just download the files [.bash_profile](/jfrazelle/mac-dev-setup/blob/master/.bash_profile), [.bash_prompt](/jfrazelle/mac-dev-setup/blob/master/.bash_prompt), [.aliases](/jfrazelle/mac-dev-setup/blob/master/.aliases), attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others, but you will need to change the last line to your path ```source "/Volumes/Macintosh HD/Users/macinator/.bash_prompt"``` and ``source "/Volumes/Macintosh HD/Users/macinator/.aliases"```):
 
     $ cd ~
     $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
     $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_prompt
+    $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.aliases
     
-At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Nicolas's MacBook Air" to just "MacBook Air", so it shows up as `MacBook-Air` in the terminal.
+At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Jess's MacBook Pro" to just "Jess-MacBook-Pro", so it shows up as `Jess-MacBook-Pro` in the terminal.
 
 Now we have a terminal we can work with!
 
