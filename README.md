@@ -887,3 +887,4 @@ Now I can open a file with `$ subl myfile.py` or start a new project in the curr
 Sublime Text is very extensible. For now we'll leave it like that, we already have a solid installation. To add more in the future, a good place to start would be to install the [Sublime Package Control](http://wbond.net/sublime_packages/package_control/installation).
  
 
+[![Analytics](https://ga-beacon.appspot.com/UA-29404280-16/mac-dev-setup/README.md)](https://github.com/jfrazelle/mac-dev-setup)
