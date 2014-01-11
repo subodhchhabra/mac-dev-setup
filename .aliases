@@ -17,9 +17,6 @@ alias rmswo='sudo find . -name '*.swo' -type f -delete'
 # remove .swp recursively
 alias rmswp='sudo find . -name '*.swp' -type f -delete'
 
-# servinator
-alias servinator='ssh root@162.243.63.153'
-
 #copy working directory
 alias cwd='pwd | tr -d "\r\n" | pbcopy'
 
