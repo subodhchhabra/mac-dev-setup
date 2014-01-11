@@ -21,4 +21,4 @@ done
 # }}}
 
 # print a fortune when the terminal opens
-fortune -a | lolcat
+fortune -a -s | lolcat
