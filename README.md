@@ -11,6 +11,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Homebrew](#homebrew)
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
+- [iTerm2](#iterm2)
 - [Git](#git)
 - [Vim](#vim)
 - [PHP](#php)
@@ -28,7 +29,6 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Apps](#apps)
 - [Things from fork I dont use personally](#things-from-fork-i-dont-use-personally)
     - [Pyton Virtualenv](#python-virtualenv)
-    - [iTerm2](#iterm2)
     - [Sublime Text](#sublime-text)
 
 ## System update
@@ -163,6 +163,22 @@ Now we have a terminal we can work with!
 
 (Thanks to Mathias Bynens for his awesome [dotfiles](https://github.com/mathiasbynens/dotfiles).)
 
+### iTerm2
+
+Also just like we did above for terminal, install the [Solarized](http://ethanschoonover.com/solarized) color scheme.
+
+Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/) (the newest version, even if it says "beta release").
+
+In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
+
+You can now launch iTerm, through the **Launchpad** for instance.
+
+Let's just quickly change some preferences. In **iTerm > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
+
+In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
+
+When done, hit the red "X" in the upper left (saving is automatic in OS X preference panes). Close the window and open a new one to see the size change.
+
 ## Git
 
 What's a developer without [Git](http://git-scm.com/)? To install, simply run:
@@ -207,7 +223,7 @@ Running ```git lg``` shows the pretty log and ```git lg -p``` shows the lines th
 
 ## Vim
 
-My favorite text-editor is [Vim](http://www.vim.org/), however I use the [macvim](https://code.google.com/p/macvim/) version. It is a very popular text editor inside the terminal, and is usually pre-installed on any Unix system.
+My favorite text-editor is [Vim](http://www.vim.org/). It is a very popular text editor inside the terminal, and is usually pre-installed on any Unix system.
 
 For example, when you run a Git commit, it will open Vim to allow you to type the commit message.
 
@@ -220,8 +236,8 @@ I already did all the work for you [here](https://github.com/jfrazelle/.vim).
 Install my .vim files by running:
 
     $ cd ~/
-    $ git clone git@github.com:jfrazelle/.vim.git .vim
-    $ mv .vim/vimrc.txt ~/.vimrc
+    $ git clone --recursive git@github.com:jfrazelle/.vim.git ~/.vim
+    $ cp ~/.vim/vimrc.txt ~/.vimrc
 
 With that, Vim will look a lot better next time you open it!
 
@@ -797,19 +813,6 @@ It will get installed in the `venv` folder, and not conflict with other projects
 
 As mentioned earlier, I like to install big packages (like Numpy), or packages I always use (like IPython) globally. All the rest I install in a virtualenv.
 
-### iTerm2
-
-Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/) (the newest version, even if it says "beta release").
-
-In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
-
-You can now launch iTerm, through the **Launchpad** for instance.
-
-Let's just quickly change some preferences. In **iTerm > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
-
-In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
-
-When done, hit the red "X" in the upper left (saving is automatic in OS X preference panes). Close the window and open a new one to see the size change.
 
 ### Sublime Text
 
