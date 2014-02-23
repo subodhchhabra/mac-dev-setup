@@ -895,9 +895,8 @@ Here is a quick list of some apps I use, and that you might find useful as well:
 
 - [Dropbox](https://www.dropbox.com/): File syncing to the cloud. I put all my documents in Dropbox. It syncs them to all my devices (laptop, mobile, tablet), and serves as a backup as well! **(Free for 2GB)**
 - [Google Drive](https://drive.google.com/): File syncing to the cloud too! I use Google Docs a lot to collaborate with others (edit a document with multiple people in real-time!), and sometimes upload other non-Google documents (pictures, etc.), so the app comes in handy for that. **(Free for 5GB)**
+- [Alfred](http://www.alfredapp.com/): Alfred saves you time when you search for files online or on your Mac. Be more productive with hotkeys, keywords and file actions at your fingertips. **($17)**
 - [ColorSnapper](http://colorsnapper.com/): An easy-to-use tool for quickly finding out the color of any pixel on the screen. It is activated via a system-wide hotkey, giving you a magnifying loupe to easily pick the pixel you need. The resulting color is copied to clipboard in a format of your preference. **($4.99)**
-- [Transmit](http://panic.com/transmit/): The #1 Mac OS X FTP client. Transfer files to to an FTP or SFTP server, or the cloud via Amazon S3, or using WebDAV. **($34)**
-- [SequelPro](http://www.sequelpro.com/): A fast, easy-to-use Mac database management application for working with MySQL databases. **(Free)**
 
 
 ## Things from fork I dont use personally
