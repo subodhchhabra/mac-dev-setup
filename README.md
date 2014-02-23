@@ -16,9 +16,9 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Vim](#vim)
 - [PHP](#php)
 - [Python](#python)
-- [Pyton Virtualenv](#python-virtualenv)
 - [IPython](#ipython)
 - [Numpy, Scipy, matplotlib, and scikit-learn](#numpy-scipy-matplotlib-and-scikit-learn)
+- [Pyton Virtualenv](#python-virtualenv)
 - [R](#r)
 - [MySQL](#mysql)
 - [Node.js](#nodejs)
@@ -156,12 +156,14 @@ We'll come back to the details of that later, but for now, just download the fil
     $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
     $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_prompt
     $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.aliases
+    $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.functions
     
 At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Jess's MacBook Pro" to just "Jess-MacBook-Pro", so it shows up as `Jess-MacBook-Pro` in the terminal.
 
 Now we have a terminal we can work with!
 
 (Thanks to Mathias Bynens for his awesome [dotfiles](https://github.com/mathiasbynens/dotfiles).)
+(Also Zach Holman's [dotfiles](https://github.com/holman/dotfiles).)
 
 ### iTerm2
 
@@ -298,12 +300,9 @@ It also installed [Pip]() (and its dependency [Distribute]()), which is the pack
     $ pip install --upgrade distribute
     $ pip install --upgrade pip
     
-Executable scripts from Python packages you install will be put in `/usr/local/share/python`, so let's add it to the `$PATH`. To do so, we'll create a `.path` text file in the home directory (I've already set up `.bash_profile` to call this file):
-
-    $ cd ~
-    $ subl .path
+Executable scripts from Python packages you install will be put in `/usr/local/share/python`, so let's add it to the `$PATH`.
     
-And add these lines to `.path`:
+And add these lines to `.bash_profile`:
 
 ```bash
 PATH=/usr/local/share/python:$PATH
@@ -329,43 +328,6 @@ To see what's installed:
 To uninstall a package:
 
     $ pip uninstall <package>
-
-### Python Virtualenv
-
-[Virtualenv](http://www.virtualenv.org/) is a tool that creates an isolated Python environment for each of your projects. For a particular project, instead of installing required packages globally, it is best to install them in an isolated folder in the project (say a folder named `venv`), that will be managed by virtualenv.
-
-The advantage is that different projects might require different versions of packages, and it would be hard to manage that if you install packages globally. It also allows you to keep your global `/usr/local/lib/python2.7/site-packages` folder clean, containing only critical or big packages that you always need (like IPython, Numpy).
-
-#### Install
-
-To install virtualenv, simply run:
-
-    $ pip install virtualenv
-
-#### Usage
-
-Let's say you have a project in a directory called `myproject`. To set up virtualenv for that project:
-
-    $ cd myproject/
-    $ virtualenv venv --distribute
-    
-If you want your virtualenv to also inherit globally installed packages (like IPython or Numpy mentioned above), use:
-
-    $ virtualenv venv --distribute --system-site-packages
-
-These commands create a `venv` subdirectory in your project where everything is installed. You need to **activate** it first though (in every terminal where you are working on your project):
-
-    $ source venv/bin/activate
-    
-You should see a `(venv)` appear at the beginning of your terminal prompt indicating that you are working inside the virtualenv. Now when you install something:
-
-    $ pip install <package>
-
-It will get installed in the `venv` folder, and not conflict with other projects.
-
-**Important**: Remember to add `venv` to your project's `.gitignore` file so you don't include all of that in your source code!
-
-As mentioned earlier, I like to install big packages (like Numpy), or packages I always use (like IPython) globally. All the rest I install in a virtualenv.
 
 
 ## IPython
@@ -408,7 +370,7 @@ To use the in-line Matplotlib functionality (nice for scientific computing), run
 
     $ ipy --pylab=inline
 
-To be able to run inline videos install:
+To be able to run inline videos install (this takes about 2 minutes to install):
 
     $ brew install ffmpeg
     
@@ -425,7 +387,7 @@ First, grab the special formulae (which are not part of Homebrew core):
 
     $ brew tap homebrew/science
     
-Then, install the `gfortran` dependency which we will need to build the libraries:
+Then, install the `gfortran` dependency which we will need to build the libraries (this takes about 5 minutes to install):
 
     $ brew install gfortran
     
@@ -458,17 +420,66 @@ Then install matplotlib
     $ pip install matplotlib
     
 (All three of these may take a few minutes to download.)
+After installing matplotlib you may get an error, `* The following required packages can not be built: * freetype`, if you do, you can resolve it by installing the `freetype` dependency:
+
+    $ brew install freetype
+
+Then try installing matplotlib again:
+
+    $ pip install matplotlib
 
 Then install scikit-learn:
 
     $ pip install -U scikit-learn
 
+
+### Python Virtualenv
+
+[Virtualenv](http://www.virtualenv.org/) is a tool that creates an isolated Python environment for each of your projects. For a particular project, instead of installing required packages globally, it is best to install them in an isolated folder in the project (say a folder named `venv`), that will be managed by virtualenv.
+
+The advantage is that different projects might require different versions of packages, and it would be hard to manage that if you install packages globally. It also allows you to keep your global `/usr/local/lib/python2.7/site-packages` folder clean, containing only critical or big packages that you always need (like IPython, Numpy).
+
+#### Install
+
+To install virtualenv, simply run:
+
+    $ pip install virtualenv
+
+#### Usage
+
+Let's say you have a project in a directory called `myproject`. To set up virtualenv for that project:
+
+    $ cd myproject/
+    $ virtualenv venv --distribute
     
+If you want your virtualenv to also inherit globally installed packages (like IPython or Numpy mentioned above), use:
+
+    $ virtualenv venv --distribute --system-site-packages
+
+These commands create a `venv` subdirectory in your project where everything is installed. You need to **activate** it first though (in every terminal where you are working on your project):
+
+    $ source venv/bin/activate
+    
+You should see a `(venv)` appear at the beginning of your terminal prompt indicating that you are working inside the virtualenv. Now when you install something:
+
+    $ pip install <package>
+
+It will get installed in the `venv` folder, and not conflict with other projects.
+
+**Important**: Remember to add `venv` to your project's `.gitignore` file so you don't include all of that in your source code!
+
+As mentioned earlier, I like to install big packages (like Numpy), or packages I always use (like IPython) globally. All the rest I install in a virtualenv.
+
+
 ## R
 
 R is a software environment for statistical computing and graphics.
 
-Install [XQuartz](https://xquartz.macosforge.org/landing/). This relies on you tapping ```brew tap homebrew/science``` and ```brew install gfortran``` from above.
+First install [XQuartz](https://xquartz.macosforge.org/landing/) <-- click the link.
+
+This relies on you tapping ```brew tap homebrew/science``` and ```brew install gfortran``` from above.
+
+Then, install r (this takes about 7 minutes):
 
     $ brew install r
 
@@ -490,6 +501,7 @@ When you're done, quit the R console:
 
     > q()
 
+You can now install whatever R packages you want. For those interested, [here’s a list of well known and commonly used packages](https://gist.github.com/hernamesbarbara/9141258) to jumpstart your collection.
 
 ## MySQL
 
@@ -545,7 +557,7 @@ Install [Node.js](http://nodejs.org/) with Homebrew:
     
 The formula also installs the [npm](https://npmjs.org/) package manager. However, as suggested by the Homebrew output, we need to add `/usr/local/share/npm/bin` to our path so that npm-installed modules with executables will have them picked up.
 
-To do so, add this line to your `~/.path` file, before the `export PATH` line:
+To do so, add this line to your `~/.bash_profile` file, before the `export PATH` line:
 
 ```bash
 PATH=/usr/local/share/npm/bin:$PATH
@@ -670,9 +682,6 @@ RubyGems keeps old versions of gems, so feel free to do come cleaning after upda
 
     $ gem cleanup
     
-I mainly use Ruby for the CSS pre-processor [Compass](http://compass-style.org/), which is built on top of [Sass](http://sass-lang.com/):
-
-    $ gem install compass --no-document
 
 ## Heroku
 

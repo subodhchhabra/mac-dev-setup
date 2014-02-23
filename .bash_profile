@@ -8,6 +8,9 @@ export PATH=/usr/local/sbin:$PATH
 # source aliases
 source "/Volumes/Macintosh HD/Users/macinator/.aliases"
 
+# source functions
+source "/Volumes/Macintosh HD/Users/macinator/.functions"
+
 # source .bash_prompt
 source "/Volumes/Macintosh HD/Users/macinator/.bash_prompt"
 
