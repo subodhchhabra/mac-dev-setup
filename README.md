@@ -65,7 +65,7 @@ You can optionally install [Google Chrome Canary](https://www.google.com/intl/en
 
 ## Homebrew
 
-Package managers make it so much easier to install and update applications (for Operating Systems) or libraries (for programming languages). The most popular one for OS X is [Homebrew](http://mxcl.github.com/homebrew/).
+Package managers make it so much easier to install and update applications (for Operating Systems) or libraries (for programming languages). The most popular one for OS X is [Homebrew](http://brew.sh).
 
 ### Install
 
