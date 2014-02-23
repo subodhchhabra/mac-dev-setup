@@ -320,7 +320,7 @@ Next create the virtual hosts in ```/etc/apache2/extra/httpd-vhosts.conf```:
     
 Restart Apache ```sudo apachectl restart``` and you are good to go.
 
-### Better Dirctory Theme
+### Better Directory Theme
 I like to swap out the default Apache directory listing with something a bit prettier. 
 
 Be sure you have `mod_autoindex` loaded. 
