@@ -35,15 +35,24 @@ alias mv='mv -i'
 # untar
 alias untar='tar xvf'
 
-# Call from a local repo to open the repository on github in browser
-function github() {
+# Call from a local repo to open the repository on github/bitbucket in browser
+function repo() {
  giturl=$(git config --get remote.origin.url)
  if [ "$giturl" == "" ]
    then
     echo "Not a git repository or no remote.origin.url set"
     exit 1;
  fi
- giturl=${giturl/git\@github\.com\:/https://github.com/}
+ if [[ "$giturl" == *github* ]]
+   then
+    giturl=${giturl/git\@github\.com\:/https://github.com/}
+ elif [[ "$giturl" == *bitbucket* ]]
+   then
+    giturl=${giturl/git\@bitbucket\.org\:/https://bitbucket.org/}
+ else
+    echo "Not a github or bitbucket repository"
+    exit 1;
+ fi
  giturl=${giturl/\.git//}
  echo $giturl
  open $giturl
