@@ -53,6 +53,8 @@ Install your favorite browser, mine happens to be Chrome.
 
 Download from [www.google.com/chrome](https://www.google.com/intl/en/chrome/browser/). Open the **.dmg** file once it's done downloading (this will mount the disk image), and drag and drop the **Google Chrome** app into the Applications folder (on the Mac, most applications are installed this way). When done, you can unmount the disk in Finder (the small "eject" icon next to the disk under **Devices**).
 
+You can optionally install [Google Chrome Canary](https://www.google.com/intl/en/chrome/browser/canary.html), which gets the latest updates first, however also has noticable bugs at times.
+
 
 ## Homebrew
 
@@ -318,6 +320,20 @@ Next create the virtual hosts in ```/etc/apache2/extra/httpd-vhosts.conf```:
     
 Restart Apache ```sudo apachectl restart``` and you are good to go.
 
+### Better Dirctory Theme
+I like to swap out the default Apache directory listing with something a bit prettier. 
+
+Be sure you have `mod_autoindex` loaded. 
+
+Add the contents of directory-theme repo to the root folder of your localhost (ex. Sites)
+
+    $ cd ~/Sites/
+    $ git clone git@github.com:jfrazelle/directory-theme.git
+    $ cp -r directory-theme/* .
+    $ rm -rf directory-theme/
+    $ mv htaccess-txt.txt .htaccess
+
+ Now when viewing your sites folder via browser it should have a much prettier theme. (this is if your sites folder is viewed via it's virtual host url, see above for virtual hosts)
 
 ## Python
 
