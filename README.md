@@ -239,6 +239,7 @@ $ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
 $ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.helpers
 $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.aliases
 $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.bash_prompt
+$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.exports
 $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.functions
 ```
     
