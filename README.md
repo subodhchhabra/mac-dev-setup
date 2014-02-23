@@ -258,6 +258,15 @@ Also just like we did above for terminal, install the [Solarized](http://ethansc
 
 Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/) (the newest version, even if it says "beta release").
 
+Or install using Homebrew Cask:
+
+```bash
+$ brew tap phinze/homebrew-cask
+$ brew install brew-cask
+$ brew tap caskroom/versions
+$ brew cask install iterm2-beta
+```
+
 In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
 
 You can now launch iTerm, through the **Launchpad** for instance.
