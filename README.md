@@ -11,6 +11,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Homebrew](#homebrew)
 - [GNU Core Utilities](#gnu-core-utilities)
 - [Bash v4](#bash-v4)
+- [Generic Colouriser](#generic-colouriser)
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
 - [iTerm2](#iterm2)
@@ -189,6 +190,20 @@ Enter your password to proceed. Now you can restart Terminal.app and check if th
 $ echo $BASH_VERSION
 ```
 
+## Generic Colouriser
+[Generic Colouriser](http://kassiopeia.juls.savba.sk/~garabik/software/grc/README.txt) is a great utility which can be used for colourising many different types of output and log files.
+
+### Install
+
+```bash
+$ brew install grc
+```
+
+Then just add the following to your `.bash_profile`:
+
+```bash
+source "`brew --prefix grc`/etc/grc.bashrc"
+```
 
 ## Consolas
 
