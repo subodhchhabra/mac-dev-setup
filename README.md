@@ -1044,7 +1044,7 @@ Stop the PostgreSQL server:
 $ pg_ctl -D /usr/local/var/postgres stop -s -m fast
 ```
 
-Or you can create two aliases in your bash_profile with the following:
+Or you can create two aliases in your `.bash_profile` with the following:
 
 ```bash
 alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
