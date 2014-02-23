@@ -28,6 +28,8 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [MongoDB](#mongodb)
 - [Redis](#redis)
 - [PostgreSQL](#postgresql)
+- [VirtualBox](#virtualbox)
+- [Vagrant](#vagrant)
 - [Apps](#apps)
 - [Things from fork I dont use personally](#things-from-fork-i-dont-use-personally)
     - [Sublime Text](#sublime-text)
@@ -614,7 +616,7 @@ PATH=/usr/local/share/npm/bin:$PATH
         
 Open a new terminal for the `$PATH` changes to take effect.
 
-We also need to tell npm where to find the Xcode Command Line Tools, by running:
+**NOTE: may not be necessary** We also need to tell npm where to find the Xcode Command Line Tools, by running:
 
     $ sudo xcode-select -switch /usr/bin
 
@@ -856,6 +858,35 @@ Or you can create two aliases in your bash_profile with the following:
 
     alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
     alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+
+## VirtualBox
+
+[VirtualBox](https://www.virtualbox.org/) is a general-purpose full virtualizer for x86 hardware, targeted at server, desktop and embedded use.
+
+### Install
+
+To install VirtualBox, use Homebrew Cask:
+
+    $ brew tap phinze/homebrew-cask
+    $ brew install brew-cask
+    $ brew cask install virtualbox
+
+
+## Vagrant
+
+[Vagrant](http://www.vagrantup.com/) is a tool for building complete development environments. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases development/production parity, and makes the "works on my machine" excuse a relic of the past.
+
+### Install
+
+The easiest way to install Vagrant is to tap Homebrew Cask, from above with VirtualBox, then:
+
+    $ brew cask install vagrant
+
+### Vagrant Completions
+Add autocomplete for Vagrant to bash completion.
+
+    $ brew tap homebrew/completions
+    $ brew install vagrant-completion
 
 
 ## Apps
