@@ -32,6 +32,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [MySQL](#mysql)
 - [VirtualBox](#virtualbox)
 - [Vagrant](#vagrant)
+- [Docker](#docker)
 - [Apps](#apps)
 - [Things from fork I dont use personally](#things-from-fork-i-dont-use-personally)
     - [Sublime Text](#sublime-text)
@@ -935,6 +936,47 @@ Add autocomplete for Vagrant to bash completion.
 Then just add the following to your `.bash_profile` to source the completions:
 
     [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; source `brew --prefix`/etc/bash_completion.d/vagrant
+
+## Docker
+
+[Docker](https://www.docker.io/) is an open-source project to easily create lightweight, portable, self-sufficient containers from any application. The same container that a developer builds and tests on a laptop can run at scale, in production, on VMs, bare metal, OpenStack clusters, public clouds and more.
+
+## Install
+
+#### OSX
+```bash
+$ brew update
+$ brew install docker
+$ brew install boot2docker
+```
+
+### How to use
+boot2docker comes with a simple init script that leverage's VirtualBox's `VBoxManage`. You can start, stop and delete the VM right from the command line.
+
+Initialize
+
+```bash
+$ boot2docker init
+```
+
+Start vm
+
+```bash
+$ boot2docker up
+```
+
+SSH into vm
+
+```bash
+$ boot2docker ssh
+```
+
+boot2docker auto logs in, but if you want to SSH into the machine, the credentials are:
+
+```
+user: docker
+pass: tcuser
+```
 
 
 ## Apps
