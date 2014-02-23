@@ -9,6 +9,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [System preferences](#system-preferences)
 - [Google Chrome](#google-chrome)
 - [Homebrew](#homebrew)
+- [Bash v4](#bash-v4)
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
 - [iTerm2](#iterm2)
@@ -108,6 +109,34 @@ Homebrew keeps older versions of packages installed, in case you want to roll ba
 To see what you have installed (with their version numbers):
 
     $ brew list --versions
+
+## Bash v4
+Do to lack of Associative Arrays in Bash (Version < 3) i decided to install bash from Homebrew.
+
+    $ brew install bash
+
+After installation, you must set your new bash as default bash in to your system. Homebrew installs bash to `/usr/local/bin/`
+
+If you wish to check your current bash version, just echo these variables:
+
+    $ echo $BASH_VERSION # gives full version
+    $ echo $BASH_VERSINFO # gives major version number
+
+We will use chsh command to proceed but before that, we must add this new bash location in to `/etc/shells`. Otherwise, system will alert an error. Now, lets edit file:
+
+    $ sudo vim /etc/shells
+
+add this line at the end of the list:
+
+    /usr/local/bin/bash
+
+Now, we can run chsh command:
+
+    $ chsh -s /usr/local/bin/bash YOUR_COMPUTERS_NAME # ex. for me this was macinator
+
+Enter your password to proceed. Now you can restart Terminal.app and check if the installation is correct:
+
+    $ echo $BASH_VERSION
 
 ## Consolas
 
@@ -247,7 +276,12 @@ With that, Vim will look a lot better next time you open it!
 ## PHP
 OS X, like Linux, ships with [PHP](http://php.net/) already installed. However to run PHP apps locally you will have to make a few tweaks.
 
-First, in your ```/etc/apache2/httpd.conf``` file make sure ```LoadModule php5_module libexec/apache2/libphp5.so``` is not commented out.
+Install Latest PHP
+
+    $ brew tap josegonzalez/homebrew-php
+    $ brew install php55
+
+In your ```/etc/apache2/httpd.conf``` file make sure ```LoadModule php5_module libexec/apache2/libphp5.so``` is not commented out.
 
 Next, if you do not currently have a ```~/Sites``` directory, create one. Then make sure you have a file in ```/etc/apache2/users/``` that is named after your computer. For example my computer is named "macinator" so I have a ```macinator.conf``` file that looks like the following:
 
