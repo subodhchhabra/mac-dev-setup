@@ -241,6 +241,7 @@ $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.aliases
 $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.bash_prompt
 $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.exports
 $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.functions
+$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.inputrc
 ```
     
 At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Jess's MacBook Pro" to just "Jess-MacBook-Pro", so it shows up as `Jess-MacBook-Pro` in the terminal.
