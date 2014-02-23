@@ -150,20 +150,20 @@ Let's go ahead and change the font. In **Terminal > Preferences...**, under the 
 
 Not a lot of colors yet. We need to tweak a little bit our Unix user's profile for that. This is done (on OS X and Linux), in the `~/.bash_profile` text file (`~` stands for the user's home directory).
 
-We'll come back to the details of that later, but for now, just download the files [.bash_profile](/jfrazelle/mac-dev-setup/blob/master/.bash_profile), [.bash_prompt](/jfrazelle/mac-dev-setup/blob/master/.bash_prompt), [.aliases](/jfrazelle/mac-dev-setup/blob/master/.aliases), attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others, but you will need to change the last line to your path ```source "/Volumes/Macintosh HD/Users/macinator/.bash_prompt"``` and ``source "/Volumes/Macintosh HD/Users/macinator/.aliases"```):
+We'll come back to the details of that later, but for now, just download the files [.bash_profile](/jfrazelle/mac-dev-setup/blob/master/.bash_profile), [.helpers](/jfrazelle/mac-dev-setup/blob/master/.helpers), attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others as well.):
 
     $ cd ~
-    $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
-    $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.bash_prompt
-    $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.aliases
+    $ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
+    $ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.helpers
+    $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.aliases
+    $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.bash_prompt
     $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.functions
     
 At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Jess's MacBook Pro" to just "Jess-MacBook-Pro", so it shows up as `Jess-MacBook-Pro` in the terminal.
 
 Now we have a terminal we can work with!
 
-(Thanks to Mathias Bynens for his awesome [dotfiles](https://github.com/mathiasbynens/dotfiles).)
-(Also Zach Holman's [dotfiles](https://github.com/holman/dotfiles).)
+Thanks to Mathias Bynens for his awesome [dotfiles](https://github.com/mathiasbynens/dotfiles). Also many thanks to Zach Holman's [dotfiles](https://github.com/holman/dotfiles).
 
 ### iTerm2
 
@@ -193,10 +193,10 @@ When done, to test that it installed fine you can run:
     
 And `$ which git` should output `/usr/local/bin/git`.
 
-Let's set up some basic configuration. Download the [.gitconfig](/jfrazelle/mac-dev-setup/blob/master/.gitconfig) file to your home directory:
+Let's set up some basic configuration. Download the [.gitconfig](/mathiasbynens/dotfiles/blob/master/.gitconfig) file to your home directory:
 
     $ cd ~
-    $ curl -O https://raw.github.com/jfrazelle/mac-dev-setup/master/.gitconfig
+    $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.gitconfig
 
 It will add some color to the `status`, `branch`, and `diff` Git commands, as well as a couple aliases. Feel free to take a look at the contents of the file, and add to it to your liking.
 
