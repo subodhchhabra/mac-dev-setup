@@ -276,6 +276,11 @@ Install my .vim files by running:
 
 With that, Vim will look a lot better next time you open it!
 
+### Install
+You can optionally install a more recent version of vim.
+
+    $ brew install vim --override-system-vi
+
 
 ## PHP
 OS X, like Linux, ships with [PHP](http://php.net/) already installed. However to run PHP apps locally you will have to make a few tweaks.
@@ -526,7 +531,11 @@ As mentioned earlier, I like to install big packages (like Numpy), or packages I
 
 R is a software environment for statistical computing and graphics.
 
-First install [XQuartz](https://xquartz.macosforge.org/landing/) <-- click the link.
+First install [XQuartz](https://xquartz.macosforge.org/landing/) <-- click the link or use Homebrew Cask:
+
+    $ brew tap phinze/homebrew-cask
+    $ brew install brew-cask
+    $ brew cask install xquartz
 
 This relies on you tapping ```brew tap homebrew/science``` and ```brew install gfortran``` from above.
 
