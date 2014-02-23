@@ -9,7 +9,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [System preferences](#system-preferences)
 - [Google Chrome](#google-chrome)
 - [Homebrew](#homebrew)
-- [GNU Core Utilities](#gnu-core-utilites)
+- [GNU Core Utilities](#gnu-core-utilities)
 - [Bash v4](#bash-v4)
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
@@ -116,7 +116,7 @@ To see what you have installed (with their version numbers):
     $ brew list --versions
 
 
-## GNU core utilities
+## GNU Core Utilities
 The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system. However the one's that come preinstalled with Mac are a bit older.
 
     $ brew install coreutils
