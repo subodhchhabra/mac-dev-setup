@@ -9,6 +9,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [System preferences](#system-preferences)
 - [Google Chrome](#google-chrome)
 - [Homebrew](#homebrew)
+- [GNU Core Utilities](#gnu-core-utilites)
 - [Bash v4](#bash-v4)
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
@@ -114,6 +115,15 @@ To see what you have installed (with their version numbers):
 
     $ brew list --versions
 
+
+## GNU core utilities
+The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system. However the one's that come preinstalled with Mac are a bit older.
+
+    $ brew install coreutils
+    # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+    $ brew install findutils
+
+
 ## Bash v4
 Do to lack of Associative Arrays in Bash (Version < 3) i decided to install bash from Homebrew.
 
@@ -141,6 +151,7 @@ Now, we can run chsh command:
 Enter your password to proceed. Now you can restart Terminal.app and check if the installation is correct:
 
     $ echo $BASH_VERSION
+
 
 ## Consolas
 
