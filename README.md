@@ -1,6 +1,6 @@
 # Mac OS X Dev Setup
 
-This document describes how I set up my developer environment on a new MacBook or iMac. We will set up [Node](http://nodejs.org/) (JavaScript), [PHP](http://www.php.net/), [Python](http://www.python.org/), and [Ruby](http://www.ruby-lang.org/) environments.
+This document describes how I set up my developer environment on a new MacBook or iMac. We will set up [Node](http://nodejs.org/), [PHP](http://www.php.net/), [Python](http://www.python.org/), [Ruby](http://www.ruby-lang.org/), and [Go](http://golang.org/) environments.
 
 The document assumes you are new to Mac. The steps below were tested on **OS X Mountain Lion**.
 
@@ -22,13 +22,14 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Numpy, Scipy, matplotlib, and scikit-learn](#numpy-scipy-matplotlib-and-scikit-learn)
 - [Pyton Virtualenv](#python-virtualenv)
 - [R](#r)
-- [MySQL](#mysql)
 - [Node.js](#nodejs)
 - [Ruby and RVM](#ruby-and-rvm)
+- [Go](#go)
 - [Heroku](#heroku)
 - [MongoDB](#mongodb)
-- [Redis](#redis)
 - [PostgreSQL](#postgresql)
+- [Redis](#redis)
+- [MySQL](#mysql)
 - [VirtualBox](#virtualbox)
 - [Vagrant](#vagrant)
 - [Apps](#apps)
@@ -576,50 +577,6 @@ When you're done, quit the R console:
 
 You can now install whatever R packages you want. For those interested, [here’s a list of well known and commonly used packages](https://gist.github.com/hernamesbarbara/9141258) to jumpstart your collection.
 
-## MySQL
-
-### Install
-
-We will install [MySQL](http://www.mysql.com/) using Homebrew, which will also install some header files needed for MySQL bindings in different programming languages (MySQL-Python for one).
-
-To install, run:
-
-    $ brew update # Always good to do
-    $ brew install mysql
-
-As you can see in the ouput from Homebrew, before we can use MySQL we first need to set it up with:
-
-    $ unset TMPDIR
-    $ mkdir /usr/local/var
-    $ mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
-
-### Usage
-
-To start the MySQL server, use the `mysql.server` tool:
-
-    $ mysql.server start
-    
-To stop it when you are done, run:
-
-    $ mysql.server stop
-    
-You can see the different commands available for `mysql.server` with:
-
-    $ mysql.server --help
-    
-To connect with the command-line client, run:
-
-    $ mysql -uroot
-    
-(Use `exit` to quit the MySQL shell.)
-
-**Note**: By default, the MySQL user `root` has no password. It doesn't really matter for a local development database. If you wish to change it though, you can use `$ mysqladmin -u root password 'new-password'`.
-
-### MySQL Workbench
-
-In terms of a GUI client for MySQL, I'm used to the official and free [MySQL Workbench](http://www.mysql.com/products/workbench/). But feel free to use whichever you prefer.
-
-You can find the MySQL Workbench download [here](http://www.mysql.com/downloads/workbench/). (**Note**: It will ask you to sign in, you don't need to, just click on "No thanks, just start my download!" at the bottom.)
 
 ## Node.js
 
@@ -754,7 +711,33 @@ To update all gems or a particular gem:
 RubyGems keeps old versions of gems, so feel free to do come cleaning after updating:
 
     $ gem cleanup
-    
+
+
+## Go
+[Go](http://golang.org/) is an open source programming language that makes it easy to build simple, reliable, and efficient software.
+
+### Install
+**First**, create the `.go` directory.
+
+    $ mkdir ~/.go
+
+Then, add the following to your path, in either your `.path` file or `.bash_profile` file.
+
+    # go path
+    export GOPATH=$HOME/.go
+    export PATH=$PATH:$GOPATH/bin
+
+Then, installing it is very easy through Homebrew, but first you need Mercurial:
+
+    $ brew install mercurial
+    $ brew install go
+    $ mkdir ~/.go
+
+### Go Tour
+To the run the go tour, just run the following:
+
+    $ go get code.google.com/p/go-tour/gotour
+    $ gotour
 
 ## Heroku
 
@@ -822,34 +805,6 @@ In another terminal, connect to the database with the Mongo shell using:
 
 I'll let you refer to MongoDB's [Getting Started](http://docs.mongodb.org/manual/tutorial/getting-started/) guide for more!
 
-## Redis
-
-[Redis](http://redis.io/) is a blazing fast, in-memory, key-value store, that uses the disk for persistence. It's kind of like a NoSQL database, but there are a lot of [cool things](http://oldblog.antirez.com/post/take-advantage-of-redis-adding-it-to-your-stack.html) that you can do with it that would be hard or inefficient with other database solutions. For example, it's often used as session management or caching by web apps, but it has many other uses.
-
-### Install
-
-To install Redis, use Homebrew:
-
-    $ brew update
-    $ brew install redis
-
-### Usage
-
-Start a local Redis server using the default configuration settings with:
-
-    $ redis-server
-
-For advanced usage, you can tweak the configuration file at `/usr/local/etc/redis.conf` (I suggest making a backup first), and use those settings with:
-
-    $ redis-server /usr/local/etc/redis.conf
-
-In another terminal, connect to the server with the Redis command-line interface using:
-
-    $ redis-cli
-
-I'll let you refer to Redis' [documentation](http://redis.io/documentation) or other tutorials for more information.
-
-
 ## PostgreSQL
 
 [PostgreSQL](http://www.postgresql.org/) is a powerful, open source object-relational database system.
@@ -881,6 +836,73 @@ Or you can create two aliases in your bash_profile with the following:
     alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
     alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 
+## Redis
+
+[Redis](http://redis.io/) is a blazing fast, in-memory, key-value store, that uses the disk for persistence. It's kind of like a NoSQL database, but there are a lot of [cool things](http://oldblog.antirez.com/post/take-advantage-of-redis-adding-it-to-your-stack.html) that you can do with it that would be hard or inefficient with other database solutions. For example, it's often used as session management or caching by web apps, but it has many other uses.
+
+### Install
+
+To install Redis, use Homebrew:
+
+    $ brew update
+    $ brew install redis
+
+### Usage
+
+Start a local Redis server using the default configuration settings with:
+
+    $ redis-server
+
+For advanced usage, you can tweak the configuration file at `/usr/local/etc/redis.conf` (I suggest making a backup first), and use those settings with:
+
+    $ redis-server /usr/local/etc/redis.conf
+
+In another terminal, connect to the server with the Redis command-line interface using:
+
+    $ redis-cli
+
+I'll let you refer to Redis' [documentation](http://redis.io/documentation) or other tutorials for more information.
+
+## MySQL
+
+### Install
+
+We will install [MySQL](http://www.mysql.com/) using Homebrew, which will also install some header files needed for MySQL bindings in different programming languages (MySQL-Python for one).
+
+To install, run:
+
+    $ brew update # Always good to do
+    $ brew install mysql
+
+As you can see in the ouput from Homebrew, before we can use MySQL we first need to set it up with:
+
+    $ unset TMPDIR
+    $ mkdir /usr/local/var
+    $ mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+
+### Usage
+
+To start the MySQL server, use the `mysql.server` tool:
+
+    $ mysql.server start
+    
+To stop it when you are done, run:
+
+    $ mysql.server stop
+    
+You can see the different commands available for `mysql.server` with:
+
+    $ mysql.server --help
+    
+To connect with the command-line client, run:
+
+    $ mysql -uroot
+    
+(Use `exit` to quit the MySQL shell.)
+
+**Note**: By default, the MySQL user `root` has no password. It doesn't really matter for a local development database. If you wish to change it though, you can use `$ mysqladmin -u root password 'new-password'`.
+
+
 ## VirtualBox
 
 [VirtualBox](https://www.virtualbox.org/) is a general-purpose full virtualizer for x86 hardware, targeted at server, desktop and embedded use.
@@ -909,6 +931,10 @@ Add autocomplete for Vagrant to bash completion.
 
     $ brew tap homebrew/completions
     $ brew install vagrant-completion
+
+Then just add the following to your `.bash_profile` to source the completions:
+
+    [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; source `brew --prefix`/etc/bash_completion.d/vagrant
 
 
 ## Apps
