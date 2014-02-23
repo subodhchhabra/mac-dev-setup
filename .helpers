@@ -5,6 +5,10 @@ alias pgup="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.
 # ipython qtconsole
 alias ipy='ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13 --pylab=inline'
 
+# python virtualenv
+alias pyvirall='virtualenv venv --system-site-packages && source venv/bin/activate'
+alias pyvir='virtualenv venv && source venv/bin/activate'
+
 # vhosts
 alias hosts='sudo vim /etc/hosts'
 alias vhosts='sudo vim /etc/apache2/extra/httpd-vhosts.conf'

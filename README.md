@@ -20,7 +20,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Python](#python)
 - [IPython](#ipython)
 - [Numpy, Scipy, matplotlib, and scikit-learn](#numpy-scipy-matplotlib-and-scikit-learn)
-- [Pyton Virtualenv](#python-virtualenv)
+- [Python Virtualenv](#python-virtualenv)
 - [R](#r)
 - [Node.js](#nodejs)
 - [Ruby and RVM](#ruby-and-rvm)
@@ -41,6 +41,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 
 First thing you need to do, on any OS acutally, is update the system! For that: **Apple Icon > Software Update...**
 
+
 ## System preferences
 
 If this is a new computer, there are a couple tweaks I like to make to the System Preferences. Feel free to follow these, or to ignore them, depending on your personal preferences.
@@ -51,6 +52,7 @@ In **Apple Icon > System Preferences**:
 - Keyboard > Key Repeat > Fast (all the way to the right)
 - Keyboard > Delay Until Repeat > Short (all the way to the right)
 - Dock > Automatically hide and show the Dock
+
 
 ## Google Chrome
 
@@ -75,72 +77,99 @@ Once you reach the downloads page, search for "command line tools", and download
 
 Finally, we can install Hombrew! In the terminal paste the following line (without the `$`), hit **Enter**, and follow the steps on the screen:
 
-    $ ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+```bash
+$ ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+```
 
 One thing we need to do is tell the system to use programs installed by Hombrew (in `/usr/local/bin`) rather than the OS default if it exists. We do this by adding `/usr/local/bin` to your `$PATH` environment variable:
 
-    $ echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
+```bash
+$ echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
+```
 
 Open an new terminal tab with **Cmd+T** (you should also close the old one), then run the following command to make sure everything works:
 
-    $ brew doctor
+```bash
+$ brew doctor
+```
     
 ### Usage
 
 To install a package (or **Formula** in Homebrew vocabulary) simply type:
 
-    $ brew install <formula>
-        
+```bash
+$ brew install <formula>
+```
+
 To update Homebrew's directory of formulae, run:
 
-    $ brew update
+```bash
+$ brew update
+```
     
 **Note**: I've seen that command fail sometimes because of a bug. If that ever happens, run the following (when you have Git installed):
 
-    $ cd /usr/local
-    $ git fetch origin
-    $ git reset --hard origin/master
+```bash
+$ cd /usr/local
+$ git fetch origin
+$ git reset --hard origin/master
+```
 
 To see if any of your packages need to be updated:
 
-    $ brew outdated
+```bash
+$ brew outdated
+```
     
 To update a package:
 
-    $ brew upgrade <formula>
+```bash
+$ brew upgrade <formula>
+```
         
 Homebrew keeps older versions of packages installed, in case you want to roll back. That rarely is necessary, so you can do some cleanup to get rid of those old versions:
 
-    $ brew cleanup
+```bash
+$ brew cleanup
+```
 
 To see what you have installed (with their version numbers):
 
-    $ brew list --versions
-
+```bash
+$ brew list --versions
+```
 
 ## GNU Core Utilities
 The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system. These are the core utilities which are expected to exist on every operating system. However the one's that come preinstalled with Mac are a bit older.
 
-    $ brew install coreutils
-    # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-    $ brew install findutils
+```bash
+$ brew install coreutils
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+$ brew install findutils
+```
 
 
 ## Bash v4
 Do to lack of Associative Arrays in Bash (Version < 3) i decided to install bash from Homebrew.
 
-    $ brew install bash
+```bash
+$ brew install bash
+```
 
 After installation, you must set your new bash as default bash in to your system. Homebrew installs bash to `/usr/local/bin/`
 
 If you wish to check your current bash version, just echo these variables:
 
-    $ echo $BASH_VERSION # gives full version
-    $ echo $BASH_VERSINFO # gives major version number
+```bash
+$ echo $BASH_VERSION # gives full version
+$ echo $BASH_VERSINFO # gives major version number
+```
 
 We will use chsh command to proceed but before that, we must add this new bash location in to `/etc/shells`. Otherwise, system will alert an error. Now, lets edit file:
 
-    $ sudo vim /etc/shells
+```bash
+$ sudo vim /etc/shells
+```
 
 add this line at the end of the list:
 
@@ -148,11 +177,15 @@ add this line at the end of the list:
 
 Now, we can run chsh command:
 
-    $ chsh -s /usr/local/bin/bash YOUR_COMPUTERS_NAME # ex. for me this was macinator
+```bash
+$ chsh -s /usr/local/bin/bash YOUR_COMPUTERS_NAME # ex. for me this was macinator
+```
 
 Enter your password to proceed. Now you can restart Terminal.app and check if the installation is correct:
 
-    $ echo $BASH_VERSION
+```bash
+$ echo $BASH_VERSION
+```
 
 
 ## Consolas
@@ -163,14 +196,16 @@ There are two ways we can install it. If you bought **Microsoft Office for Mac**
 
 If you don't have Office, follow these steps:
 
-    $ brew install cabextract
-    $ cd ~/Downloads
-    $ mkdir consolas
-    $ cd consolas
-    $ curl -O http://download.microsoft.com/download/f/5/a/f5a3df76-d856-4a61-a6bd-722f52a5be26/PowerPointViewer.exe
-    $ cabextract PowerPointViewer.exe
-    $ cabextract ppviewer.cab
-    $ open CONSOLA*.TTF
+```bash
+$ brew install cabextract
+$ cd ~/Downloads
+$ mkdir consolas
+$ cd consolas
+$ curl -O http://download.microsoft.com/download/f/5/a/f5a3df76-d856-4a61-a6bd-722f52a5be26/PowerPointViewer.exe
+$ cabextract PowerPointViewer.exe
+$ cabextract ppviewer.cab
+$ open CONSOLA*.TTF
+```
 
 And click **Install Font**. Thanks to Alexander Zhuravlev for his [post](http://blog.ikato.com/post/15675823000/how-to-install-consolas-font-on-mac-os-x).
 
@@ -198,12 +233,14 @@ Not a lot of colors yet. We need to tweak a little bit our Unix user's profile f
 
 We'll come back to the details of that later, but for now, just download the files [.bash_profile](/jfrazelle/mac-dev-setup/blob/master/.bash_profile), [.helpers](/jfrazelle/mac-dev-setup/blob/master/.helpers), attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others as well.):
 
-    $ cd ~
-    $ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
-    $ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.helpers
-    $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.aliases
-    $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.bash_prompt
-    $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.functions
+```bash
+$ cd ~
+$ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
+$ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.helpers
+$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.aliases
+$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.bash_prompt
+$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.functions
+```
     
 At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Jess's MacBook Pro" to just "Jess-MacBook-Pro", so it shows up as `Jess-MacBook-Pro` in the terminal.
 
@@ -231,31 +268,41 @@ When done, hit the red "X" in the upper left (saving is automatic in OS X prefer
 
 What's a developer without [Git](http://git-scm.com/)? To install, simply run:
 
-    $ brew install git
+```bash
+$ brew install git
+```
     
 When done, to test that it installed fine you can run:
 
-    $ git --version
+```bash
+$ git --version
+```
     
 And `$ which git` should output `/usr/local/bin/git`.
 
 Let's set up some basic configuration. Download the [.gitconfig](/mathiasbynens/dotfiles/blob/master/.gitconfig) file to your home directory:
 
-    $ cd ~
-    $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.gitconfig
+```bash
+$ cd ~
+$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.gitconfig
+```
 
 It will add some color to the `status`, `branch`, and `diff` Git commands, as well as a couple aliases. Feel free to take a look at the contents of the file, and add to it to your liking.
 
 Next, we'll define your Git user (should be the same name and email you use for [GitHub](https://github.com/) and [Heroku](http://www.heroku.com/)):
 
-    $ git config --global user.name "Your Name Here"
-    $ git config --global user.email "your_email@youremail.com"
+```bash
+$ git config --global user.name "Your Name Here"
+$ git config --global user.email "your_email@youremail.com"
+```
 
 They will get added to your `.gitconfig` file.
 
 To push code to your GitHub repositories, we're going to use the recommended HTTPS method (versus SSH). So you don't have to type your username and password everytime, let's enable Git password caching as described [here](https://help.github.com/articles/set-up-git):
 
-    $ git config --global credential.helper osxkeychain
+```bash
+$ git config --global credential.helper osxkeychain
+```
     
 **Note**: On a Mac, it is important to remember to add `.DS_Store` (a hidden OS X system file that's put in folders) to your `.gitignore` files. You can take a look at this repository's [.gitignore](/nicolahery/mac-dev-setup/blob/master/.gitignore) file for inspiration.
 
@@ -264,7 +311,9 @@ Based off [this](https://coderwall.com/p/euwpig) article.
 
 Type into terminal:
 
-    git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```bash
+$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
     
 Running ```git lg``` shows the pretty log and ```git lg -p``` shows the lines that changed.
 
@@ -285,16 +334,20 @@ I already did all the work for you [here](https://github.com/jfrazelle/.vim).
 
 Install my .vim files by running:
 
-    $ cd ~/
-    $ git clone --recursive git@github.com:jfrazelle/.vim.git ~/.vim
-    $ cp ~/.vim/vimrc.txt ~/.vimrc
+```bash
+$ cd ~/
+$ git clone --recursive git@github.com:jfrazelle/.vim.git ~/.vim
+$ cp ~/.vim/vimrc.txt ~/.vimrc
+```
 
 With that, Vim will look a lot better next time you open it!
 
 ### Install
 You can optionally install a more recent version of vim.
 
-    $ brew install vim --override-system-vi
+```bash
+$ brew install vim --override-system-vi
+```
 
 
 ## PHP
@@ -302,8 +355,10 @@ OS X, like Linux, ships with [PHP](http://php.net/) already installed. However t
 
 Install Latest PHP
 
-    $ brew tap josegonzalez/homebrew-php
-    $ brew install php55
+```bash
+$ brew tap josegonzalez/homebrew-php
+$ brew install php55
+```
 
 In your ```/etc/apache2/httpd.conf``` file make sure ```LoadModule php5_module libexec/apache2/libphp5.so``` is not commented out.
 
@@ -349,11 +404,13 @@ Be sure you have `mod_autoindex` loaded.
 
 Add the contents of directory-theme repo to the root folder of your localhost (ex. Sites)
 
-    $ cd ~/Sites/
-    $ git clone git@github.com:jfrazelle/directory-theme.git
-    $ cp -r directory-theme/* .
-    $ rm -rf directory-theme/
-    $ mv htaccess-txt.txt .htaccess
+```bash
+$ cd ~/Sites/
+$ git clone git@github.com:jfrazelle/directory-theme.git
+$ cp -r directory-theme/* .
+$ rm -rf directory-theme/
+$ mv htaccess-txt.txt .htaccess
+```
 
  Now when viewing your sites folder via browser it should have a much prettier theme. (this is if your sites folder is viewed via it's virtual host url, see above for virtual hosts)
 
@@ -363,13 +420,17 @@ OS X, like Linux, ships with [Python](http://python.org/) already installed. But
 
 The following command will install Python 2.7 and any dependencies required (it can take a few minutes to build everything):
 
-    $ brew install python
+```bash
+$ brew install python
+```
     
 When finished, you should get a summary in the terminal. Running `$ which python` should output `/usr/local/bin/python`.
 
 It also installed [Pip]() (and its dependency [Distribute]()), which is the package manager for Python. Let's upgrade them both:
 
-    $ pip install --upgrade pip
+```bash
+$ pip install --upgrade pip
+```
     
 Executable scripts from Python packages you install will be put in `/usr/local/share/python`, so let's add it to the `$PATH`.
     
@@ -386,19 +447,27 @@ Save the file and open a new terminal to take the new `$PATH` into account (ever
 
 Here are a couple Pip commands to get you started. To install a Python package:
 
-    $ pip install <package>
+```bash
+$ pip install <package>
+```
 
 To upgrade a package:
 
-    $ pip install --upgrade <package>
+```bash
+$ pip install --upgrade <package>
+```
         
 To see what's installed:
 
-    $ pip freeze
+```bash
+$ pip freeze
+```
     
 To uninstall a package:
 
-    $ pip uninstall <package>
+```bash
+$ pip uninstall <package>
+```
 
 
 ## IPython
@@ -409,25 +478,33 @@ To uninstall a package:
 
 Before we install IPython, we'll need to get some dependencies. Run the following:
 
-    $ brew update # Always good to do
-    $ brew install zeromq # Necessary for pyzmq
-    $ brew install pyqt # Necessary for the qtconsole
+```bash
+$ brew update # Always good to do
+$ brew install zeromq # Necessary for pyzmq
+$ brew install pyqt # Necessary for the qtconsole
+```
     
 It may take a few minutes to build these.
 
 Once it's done, we can install IPython with all the available options:
 
-    $ pip install ipython[zmq,qtconsole,notebook,test]
+```bash
+$ pip install ipython[zmq,qtconsole,notebook,test]
+```
 
 ### Usage
 
 You can launch IPython from the command line with `$ ipython`, but what's more interesting is to use its [QT Console](http://ipython.org/ipython-doc/stable/interactive/qtconsole.html). Launch the QT Console by running:
 
-    $ ipython qtconsole
+```bash
+$ ipython qtconsole
+```
     
 You can also customize the font it uses:
 
-    $ ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13
+```bash
+$ ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13
+```
     
 And since I'm lazy and I don't want to type or copy & paste that all the time, I'm going to create an alias for it. Create a `.extra` text file in your home directory with `$ subl ~/.extra` (I've set up `.bash_profile` to load `.extra`), and add the following line:
 
@@ -439,11 +516,15 @@ Open a fresh terminal. Now when you run `$ ipy`, it will launch the QT Console w
 
 To use the in-line Matplotlib functionality (nice for scientific computing), run:
 
-    $ ipy --pylab=inline
+```bash
+$ ipy --pylab=inline
+```
 
 To be able to run inline videos install (this takes about 2 minutes to install):
 
-    $ brew install ffmpeg
+```bash
+$ brew install ffmpeg
+```
     
 If you are getting an error message when running iPython with the following:
 > Python History requires SQLite, your history will not be saved.
@@ -456,52 +537,76 @@ If you are getting an error message when running iPython with the following:
 
 First, grab the special formulae (which are not part of Homebrew core):
 
-    $ brew tap homebrew/science
+```bash
+$ brew tap homebrew/science
+```
     
 Then, install the `gfortran` dependency which we will need to build the libraries (this takes about 5 minutes to install):
 
-    $ brew install gfortran
+```bash
+$ brew install gfortran
+```
     
 You can install Numpy with:
 
-    $ pip install numpy
+```bash
+$ pip install numpy
+```
 
 Test your Numpy installation:
 
-    $ python
-    import numpy
-    print numpy.__version__
-    print numpy.__file__
-    quit()
+```bash
+$ python
+```
+```python
+import numpy
+print numpy.__version__
+print numpy.__file__
+quit()
+```
 
 You can install Scipy with:
 
-    $ pip install scipy
+```bash
+$ pip install scipy
+```
     
 Test your Scipy installation:
 
-    $ python
-    import scipy
-    print scipy.__version__
-    print scipy.__file__
-    quit()
+```bash
+$ python
+```
+```python
+import scipy
+print scipy.__version__
+print scipy.__file__
+quit()
+```
 
 Then install matplotlib
 
-    $ pip install matplotlib
+```bash
+$ pip install matplotlib
+```
     
 (All three of these may take a few minutes to download.)
 After installing matplotlib you may get an error, `* The following required packages can not be built: * freetype`, if you do, you can resolve it by installing the `freetype` dependency:
 
-    $ brew install freetype
+```bash
+$ brew install freetype
+```
 
 Then try installing matplotlib again:
 
-    $ pip install matplotlib
+```bash
+$ pip install matplotlib
+```
 
 Then install scikit-learn:
 
-    $ pip install -U scikit-learn
+```bash
+$ pip install -U scikit-learn
+```
 
 
 ### Python Virtualenv
@@ -514,32 +619,49 @@ The advantage is that different projects might require different versions of pac
 
 To install virtualenv, simply run:
 
-    $ pip install virtualenv
+```bash
+$ pip install virtualenv
+```
 
 #### Usage
 
 Let's say you have a project in a directory called `myproject`. To set up virtualenv for that project:
 
-    $ cd myproject/
-    $ virtualenv venv --distribute
+```bash
+$ cd myproject/
+$ virtualenv venv --distribute
+```
     
 If you want your virtualenv to also inherit globally installed packages (like IPython or Numpy mentioned above), use:
 
-    $ virtualenv venv --distribute --system-site-packages
+```bash
+$ virtualenv venv --system-site-packages
+```
 
 These commands create a `venv` subdirectory in your project where everything is installed. You need to **activate** it first though (in every terminal where you are working on your project):
 
-    $ source venv/bin/activate
+```bash
+$ source venv/bin/activate
+```
     
 You should see a `(venv)` appear at the beginning of your terminal prompt indicating that you are working inside the virtualenv. Now when you install something:
 
-    $ pip install <package>
+```bash
+$ pip install <package>
+```
 
 It will get installed in the `venv` folder, and not conflict with other projects.
 
 **Important**: Remember to add `venv` to your project's `.gitignore` file so you don't include all of that in your source code!
 
 As mentioned earlier, I like to install big packages (like Numpy), or packages I always use (like IPython) globally. All the rest I install in a virtualenv.
+
+You can create two aliases in your `.bash_profile` with the following:
+
+```bash
+alias pyvirall='virtualenv venv --system-site-packages && source venv/bin/activate'
+alias pyvir='virtualenv venv && source venv/bin/activate'
+```
 
 
 ## R
@@ -548,33 +670,41 @@ R is a software environment for statistical computing and graphics.
 
 First install [XQuartz](https://xquartz.macosforge.org/landing/) <-- click the link or use Homebrew Cask:
 
-    $ brew tap phinze/homebrew-cask
-    $ brew install brew-cask
-    $ brew cask install xquartz
+```bash
+$ brew tap phinze/homebrew-cask
+$ brew install brew-cask
+$ brew cask install xquartz
+```
 
 This relies on you tapping ```brew tap homebrew/science``` and ```brew install gfortran``` from above.
 
 Then, install r (this takes about 7 minutes):
 
-    $ brew install r
+```bash
+$ brew install r
+```
 
 To test your installation:
 
-    $ r
-    > x <- 4+5
-    > x
-    [1] 9
-    >
-    > addup <- function(a, b=10)
-    + {
-    + return (a+b)
-    + }
-    > addup(4,5)
-    [1] 9
+```bash
+$ r
+```r
+x <- 4+5
+x
+# [1] 9
+addup <- function(a, b=10)
+{
+return (a+b)
+}
+addup(4,5)
+# [1] 9
+```
 
 When you're done, quit the R console:
 
-    > q()
+```r
+q()
+```
 
 You can now install whatever R packages you want. For those interested, [here’s a list of well known and commonly used packages](https://gist.github.com/hernamesbarbara/9141258) to jumpstart your collection.
 
@@ -583,8 +713,10 @@ You can now install whatever R packages you want. For those interested, [here’
 
 Install [Node.js](http://nodejs.org/) with Homebrew:
 
-    $ brew update
-    $ brew install node
+```bash
+$ brew update
+$ brew install node
+```
     
 The formula also installs the [npm](https://npmjs.org/) package manager. However, as suggested by the Homebrew output, we need to add `/usr/local/share/npm/bin` to our path so that npm-installed modules with executables will have them picked up.
 
@@ -598,40 +730,56 @@ Open a new terminal for the `$PATH` changes to take effect.
 
 **NOTE: may not be necessary** We also need to tell npm where to find the Xcode Command Line Tools, by running:
 
-    $ sudo xcode-select -switch /usr/bin
+```bash
+$ sudo xcode-select -switch /usr/bin
+```
 
 Node modules are installed locally in the `node_modules` folder of each project by default, but there are at least two that are worth installing globally. Those are [CoffeeScript](http://coffeescript.org/) and [Grunt](http://gruntjs.com/):
 
-    $ npm install -g coffee-script
-    $ npm install -g grunt-cli
+```bash
+$ npm install -g coffee-script
+$ npm install -g grunt-cli
+```
 
 ### Npm usage
 
 To install a package:
 
-    $ npm install <package> # Install locally
-    $ npm install -g <package> # Install globally
+```bash
+$ npm install <package> # Install locally
+$ npm install -g <package> # Install globally
+```
 
 To install a package and save it in your project's `package.json` file:
 
-    $ npm install <package> --save
+```bash
+$ npm install <package> --save
+```
 
 To see what's installed:
 
-    $ npm list # Local
-    $ npm list -g # Global
+```bash
+$ npm list # Local
+$ npm list -g # Global
+```
 
 To find outdated packages (locally or globally):
 
-    $ npm outdated [-g]
+```bash
+$ npm outdated [-g]
+```
 
 To upgrade all or a particular package:
 
-    $ npm update [<package>]
+```bash
+$ npm update [<package>]
+```
 
 To uninstall a package:
 
-    $ npm uninstall <package>
+```bash
+$ npm uninstall <package>
+```
 
 ## Ruby and RVM
 
@@ -641,7 +789,9 @@ Like Python, [Ruby](http://www.ruby-lang.org/) is already installed on Unix syst
 
 When installing Ruby, best practice is to use [RVM](https://rvm.io/) (Ruby Version Manager) which allows you to manage multiple versions of Ruby on the same machine. Installing RVM, as well as the latest version of Ruby, is very easy. Just run:
 
-    $ curl -L https://get.rvm.io | bash -s stable --ruby
+```bash
+$ curl -L https://get.rvm.io | bash -s stable --ruby
+```
     
 When it is done, both RVM and a fresh version of Ruby 2.0 are installed. The following line was also automatically added to your `.bash_profile`:
 
@@ -653,7 +803,9 @@ I prefer to move that line to the `.extra` file, keeping my `.bash_profile` clea
 
 After that, start a new terminal and run:
 
-    $ type rvm | head -1
+```bash
+$ type rvm | head -1
+```
     
 You should get the output `rvm is a function`.
 
@@ -661,57 +813,83 @@ You should get the output `rvm is a function`.
 
 The following command will show you which versions of Ruby you have installed:
 
-    $ rvm list
+```bash
+$ rvm list
+```
 
 The one that was just installed, Ruby 2.0, should be set as default. When managing multiple versions, you switch between them with:
 
-    $ rvm use system # Switch back to system install (1.8)
-    $ rvm use 2.0.0 --default # Switch to 2.0.0 and sets it as default
+```bash
+$ rvm use system # Switch back to system install (1.8)
+$ rvm use 2.0.0 --default # Switch to 2.0.0 and sets it as default
+```
 
 Run the following to make sure the version you want is being used (in our case, the just-installed Ruby 1.9.3):
 
-    $ which ruby
-    $ ruby --version
+```bash
+$ which ruby
+$ ruby --version
+```
 
 You can install another version with:
 
-    $ rvm install 1.9.3
+```bash
+$ rvm install 1.9.3
+```
 
 To update RVM itself, use:
 
-    $ rvm get stable
+```bash
+$ rvm get stable
+```
     
 [RubyGems](http://rubygems.org/), the Ruby package manager, was also installed:
 
-    $ which gem
+```bash
+$ which gem
+```
     
 Update to its latest version with:
 
-    $ gem update --system
+```bash
+$ gem update --system
+```
     
 To install a "gem" (Ruby package), run:
 
-    $ gem install <gemname>
+```bash
+$ gem install <gemname>
+```
         
 To install without generating the documentation for each gem (faster):
 
-    $ gem install <gemname> --no-document
+```bash
+$ gem install <gemname> --no-document
+```
         
 To see what gems you have installed:
 
-    $ gem list
+```bash
+$ gem list
+```
     
 To check if any installed gems are outdated:
 
-    $ gem outdated
+```bash
+$ gem outdated
+```
     
 To update all gems or a particular gem:
 
-    $ gem update [<gemname>]
+```bash
+$ gem update [<gemname>]
+```
     
 RubyGems keeps old versions of gems, so feel free to do come cleaning after updating:
 
-    $ gem cleanup
+```bash
+$ gem cleanup
+```
 
 
 ## Go
@@ -720,25 +898,33 @@ RubyGems keeps old versions of gems, so feel free to do come cleaning after upda
 ### Install
 **First**, create the `.go` directory.
 
-    $ mkdir ~/.go
+```bash
+$ mkdir ~/.go
+```
 
 Then, add the following to your path, in either your `.path` file or `.bash_profile` file.
 
-    # go path
-    export GOPATH=$HOME/.go
-    export PATH=$PATH:$GOPATH/bin
+```bash
+# go path
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+```
 
 Then, installing it is very easy through Homebrew, but first you need Mercurial:
 
-    $ brew install mercurial
-    $ brew install go
-    $ mkdir ~/.go
+```bash
+$ brew install mercurial
+$ brew install go
+$ mkdir ~/.go
+```
 
 ### Go Tour
 To the run the go tour, just run the following:
 
-    $ go get code.google.com/p/go-tour/gotour
-    $ gotour
+```bash
+$ go get code.google.com/p/go-tour/gotour
+$ gotour
+```
 
 ## Heroku
 
@@ -748,11 +934,15 @@ To the run the go tour, just run the following:
 
 Assuming that you have an account (sign up if you don't), let's install the [Heroku Client](https://devcenter.heroku.com/articles/using-the-cli) for the command-line. Heroku offers a Mac OS X installer, the [Heroku Toolbelt](https://toolbelt.heroku.com/), that includes the client. But for these kind of tools, I prefer using Homebrew. It allows us to keep better track of what we have installed. Luckily for us, Homebrew includes a `heroku-toolbelt` formula:
 
-    $ brew install heroku-toolbelt
+```bash
+$ brew install heroku-toolbelt
+```
     
 The formula might not have the latest version of the Heroku Client, which is updated pretty often. Let's update it now:
 
-    $ heroku update
+```bash
+$ heroku update
+```
     
 Don't be afraid to run `heroku update` every now and then to always have the most recent version.
 
@@ -760,26 +950,34 @@ Don't be afraid to run `heroku update` every now and then to always have the mos
 
 Login to your Heroku account using your email and password:
 
-    $ heroku login
+```bash
+$ heroku login
+```
     
 If this is a new account, and since you don't already have a public **SSH key** in your `~/.ssh` directory, it will offer to create one for you. Say yes! It will also upload the key to your Heroku account, which will allow you to deploy apps from this computer.
 
 If it didn't offer create the SSH key for you (i.e. your Heroku account already has SSH keys associated with it), you can do so manually by running:
 
-     $ mkdir ~/.ssh
-     $ ssh-keygen -t rsa
+```bash
+$ mkdir ~/.ssh
+$ ssh-keygen -t rsa
+```
      
 Keep the default file name and skip the passphrase by just hitting Enter both times. Then, add the key to your Heroku account:
 
-    $ heroku keys:add
+```bash
+$ heroku keys:add
+```
     
 Once the key business is done, you're ready to deploy apps! Heroku has a great [Getting Started](https://devcenter.heroku.com/articles/python) guide, so I'll let you refer to that (the one linked here is for Python, but there is one for every popular language). Heroku uses Git to push code for deployment, so make sure your app is under Git version control. A quick cheat sheet (if you've used Heroku before):
 
-    $ cd myapp/
-    $ heroku create myapp
-    $ git push heroku master
-    $ heroku ps
-    $ heroku logs -t
+```bash
+$ cd myapp/
+$ heroku create myapp
+$ git push heroku master
+$ heroku ps
+$ heroku logs -t
+```
     
 The [Heroku Dev Center](https://devcenter.heroku.com/) is full of great resources, so be sure to check it out!
 
@@ -791,18 +989,24 @@ The [Heroku Dev Center](https://devcenter.heroku.com/) is full of great resource
 
 Installing it is very easy through Homebrew:
 
-    $ brew update
-    $ brew install mongo
+```bash
+$ brew update
+$ brew install mongo
+```
 
 ### Usage
 
 In a terminal, start the MongoDB server:
 
-    $ mongod
+```bash
+$ mongod
+```
 
 In another terminal, connect to the database with the Mongo shell using:
 
-    $ mongo
+```bash
+$ mongo
+```
 
 I'll let you refer to MongoDB's [Getting Started](http://docs.mongodb.org/manual/tutorial/getting-started/) guide for more!
 
@@ -814,28 +1018,45 @@ I'll let you refer to MongoDB's [Getting Started](http://docs.mongodb.org/manual
 
 To install Redis, use Homebrew:
 
-    $ brew update
-    $ brew install postgresql
+```bash
+$ brew update
+$ brew install postgresql
+```
 
 ### Create/Upgrade a database
 If this is your first time installing Postgres with Homebrew, you’ll need to create a database with:
 
-    $ initdb /usr/local/var/postgres -E utf8
+```bash
+$ initdb /usr/local/var/postgres -E utf8
+```
 
 ### Usage
 
 Start a local PostgreSQL server using the default configuration settings with:
 
-    $ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+```bash
+$ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+```
 
 Stop the PostgreSQL server:
 
-    $ pg_ctl -D /usr/local/var/postgres stop -s -m fast
+```bash
+$ pg_ctl -D /usr/local/var/postgres stop -s -m fast
+```
 
 Or you can create two aliases in your bash_profile with the following:
 
-    alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-    alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+```bash
+alias pgdown='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias pgup='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+```
+
+You can also add a `.psqlrc` in your root with the following to auto size tables and colorize in the postgres shell:
+
+```bash
+\x auto
+\set PROMPT1 '%[%033[1;32;40m%]%M:%&gt; %n@%/%[%033[0m%]% # '
+```
 
 ## Redis
 
@@ -845,22 +1066,30 @@ Or you can create two aliases in your bash_profile with the following:
 
 To install Redis, use Homebrew:
 
-    $ brew update
-    $ brew install redis
+```bash
+$ brew update
+$ brew install redis
+```
 
 ### Usage
 
 Start a local Redis server using the default configuration settings with:
 
-    $ redis-server
+```bash
+$ redis-server
+```
 
 For advanced usage, you can tweak the configuration file at `/usr/local/etc/redis.conf` (I suggest making a backup first), and use those settings with:
 
-    $ redis-server /usr/local/etc/redis.conf
+```bash
+$ redis-server /usr/local/etc/redis.conf
+```
 
 In another terminal, connect to the server with the Redis command-line interface using:
 
-    $ redis-cli
+```bash
+$ redis-cli
+```
 
 I'll let you refer to Redis' [documentation](http://redis.io/documentation) or other tutorials for more information.
 
@@ -872,32 +1101,44 @@ We will install [MySQL](http://www.mysql.com/) using Homebrew, which will also i
 
 To install, run:
 
-    $ brew update # Always good to do
-    $ brew install mysql
+```bash
+$ brew update # Always good to do
+$ brew install mysql
+```
 
 As you can see in the ouput from Homebrew, before we can use MySQL we first need to set it up with:
 
-    $ unset TMPDIR
-    $ mkdir /usr/local/var
-    $ mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+```bash
+$ unset TMPDIR
+$ mkdir /usr/local/var
+$ mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+```
 
 ### Usage
 
 To start the MySQL server, use the `mysql.server` tool:
 
-    $ mysql.server start
+```bash
+$ mysql.server start
+```
     
 To stop it when you are done, run:
 
-    $ mysql.server stop
+```bash
+$ mysql.server stop
+```
     
 You can see the different commands available for `mysql.server` with:
 
-    $ mysql.server --help
+```bash
+$ mysql.server --help
+```
     
 To connect with the command-line client, run:
 
-    $ mysql -uroot
+```bash
+$ mysql -uroot
+```
     
 (Use `exit` to quit the MySQL shell.)
 
@@ -912,9 +1153,11 @@ To connect with the command-line client, run:
 
 To install VirtualBox, use Homebrew Cask:
 
-    $ brew tap phinze/homebrew-cask
-    $ brew install brew-cask
-    $ brew cask install virtualbox
+```bash
+$ brew tap phinze/homebrew-cask
+$ brew install brew-cask
+$ brew cask install virtualbox
+```
 
 
 ## Vagrant
@@ -925,25 +1168,30 @@ To install VirtualBox, use Homebrew Cask:
 
 The easiest way to install Vagrant is to tap Homebrew Cask, from above with VirtualBox, then:
 
-    $ brew cask install vagrant
+```bash
+$ brew cask install vagrant
+```
 
 ### Vagrant Completions
 Add autocomplete for Vagrant to bash completion.
 
-    $ brew tap homebrew/completions
-    $ brew install vagrant-completion
+```bash
+$ brew tap homebrew/completions
+$ brew install vagrant-completion
+```
 
 Then just add the following to your `.bash_profile` to source the completions:
 
-    [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; source `brew --prefix`/etc/bash_completion.d/vagrant
+```bash
+[ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; source `brew --prefix`/etc/bash_completion.d/vagrant
+```
 
 ## Docker
 
 [Docker](https://www.docker.io/) is an open-source project to easily create lightweight, portable, self-sufficient containers from any application. The same container that a developer builds and tests on a laptop can run at scale, in production, on VMs, bare metal, OpenStack clusters, public clouds and more.
 
-## Install
+### Install
 
-#### OSX
 ```bash
 $ brew update
 $ brew install docker
