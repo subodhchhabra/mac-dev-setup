@@ -264,6 +264,8 @@ For example, when you run a Git commit, it will open Vim to allow you to type th
 
 I suggest you read a tutorial on Vim. Grasping the concept of the two "modes" of the editor, **Insert** (by pressing `i`) and **Normal** (by pressing `Esc` to exit Insert mode), will be the part that feels most unatural. After that it's just remembering a few important keys.
 
+### Configuration
+
 Vim's default settings aren't great, and you could spend a lot of time tweaking your configuration (the `.vimrc` file).
 
 I already did all the work for you [here](https://github.com/jfrazelle/.vim).
