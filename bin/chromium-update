@@ -1,0 +1,90 @@
+#!/bin/sh
+
+function help () {
+    echo "chromium-update - a simple script to curl the latest download of chromium for mac"
+    echo "    as long as thry don't mess with the url structure..."
+    echo ""
+    echo "    chromium-update run  - graps the latest unzips it and rewrites it over what is in your applications folder";
+}
+
+#Library of colorized logging functions, just source this
+function error() {
+    echo "\033[31m$*\033[0m"
+}
+
+function announce() {
+  echo "\033[34m$*\033[0m"
+}
+
+function fatal() {
+    echo "\033[41m$*\033[0m"
+    exit 1
+}
+
+function info() {
+    echo "\033[32m$*\033[0m"
+}
+
+function warn() {
+  echo "\033[33m$*\033[0m"
+}
+
+function log() {
+    echo "\033[36m$*\033[0m"
+}
+
+function code() {
+    echo "CODE$*"
+    exit $*
+}
+
+if [ $1 ]
+then
+    case "$1" in
+        run)
+            cd ~/Downloads
+            curl_url=https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/LAST_CHANGE
+            log "Curling $curl_url"
+            last_change=$(curl -s $curl_url)
+            info "Last Change was: $last_change"
+
+            download_url=https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/$last_change/chrome-mac.zip
+            log "Downloading $download_url"
+            
+            file=~/Downloads/chrome-mac-$last_change.zip
+            directory=~/Downloads/chrome-mac
+
+            wget -O $file $download_url
+            if [ -f $file ];
+            then
+                info "File downloaded. Unzipping contents."
+
+                unzip -qa $file
+
+                if [ -d  $directory ];
+                then
+                    info "Unzipped successfully. Moving application."
+                    rm -rf /Applications/Chromium.app
+                    mv -f $directory/Chromium.app  /Applications/Chromium.app
+
+                    # cleanup files
+                    rm -rf $file
+                    rm -rf $directory
+                    announce "Chromium Updated!"
+                else
+                    warn "You may not have unzip installed."
+                    error "Unzipping to directory, $directory, failed."
+                fi
+            else
+                warn "You may not have wget installed."
+                error "wget of https://commondatastorage.googleapis.com/chromium-browser-snapshots/MacGit/$last_change/chrome-mac.zip failed"
+            fi
+        ;;
+        *)
+            help
+        ;;
+    esac
+else
+    help
+fi
+

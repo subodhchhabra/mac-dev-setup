@@ -1,0 +1,36 @@
+#!/bin/sh
+
+function help () {
+    echo "htotheizzo - a simple script that makes updating/upgrading homebrew, gems, node packages, and heroku so much easier"
+    echo ""
+    echo "    htotheizoo run                   - runs the updates";
+}
+
+if [ $1 ]
+then
+    case "$1" in
+        run)
+            echo "htotheizzo is running the update functions"
+            brew update
+            brew upgrade
+            brew cleanup -s --force
+            brew cask cleanup
+            sudo gem update
+            sudo gem cleanup
+            npm update -g
+            heroku update
+            pip_packages=( virtualenv matplotlib ipython numpy scipy scikit-learn pandas patsy statsmodels ggplot yhat )
+            for pip_package in "${pip_packages[@]}" 
+            do
+                sudo pip install --upgrade "${pip_package}"
+            done
+            sudo rm -rf tmp
+            echo "htotheizzo is complete, you got 99 problems but updates ain't one"
+        ;;
+        *)
+            help
+        ;;
+    esac
+else
+    help
+fi

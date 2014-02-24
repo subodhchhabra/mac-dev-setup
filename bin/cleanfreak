@@ -1,0 +1,43 @@
+#!/bin/sh
+
+function help () {
+    echo "cleanfreak - Are you ocd? Do you hate having files that are automatically generated, do nothing, and yet they keep you up at night. Then this script is for you. We should probably be friends."
+    echo ""
+    echo "    cleanfreak run                   - make your directories squeaky clean";
+    echo ""
+    echo "    options to be appended onto cleanfreak run:";
+    echo "          -t                         - run function and clear terminal history";
+}
+
+if [ $1 ]
+then
+    case "$1" in
+        run)
+            echo "cleanfreak is here to save the day"
+            
+            # remove .DS_Store recursively
+            #echo "cleaning up stupid .DS_Store files, it's pointless but it feels good"
+            #cd ~
+            #sudo find . -name '*.DS_Store' -type f -delete
+
+            # remove vim .swp, .swo, and .pyc files recursively
+            echo "cleaning up vim .swp, .swo, and .pyc files from ~/Dropbox"
+            cd ~/Dropbox
+            sudo find . -name '*.swp' -type f -delete
+            sudo find . -name '*.swo' -type f -delete
+            sudo find . -name '*.pyc' -type f -delete
+        ;;
+        *)
+            help
+        ;;
+    esac
+    case "$2" in
+        -t | --terminal )
+            # clear terminal history (only for the insane)
+            echo "clearing terminal history"
+            history -c
+        ;; 
+    esac
+else
+    help
+fi
