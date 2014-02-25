@@ -3,7 +3,7 @@
 # cloudapp
 # Zach Holman / @holman
 #
-# Uploads a file from the command line to CloudApp, drops it into your 
+# Uploads a file from the command line to CloudApp, drops it into your
 # clipboard (on a Mac, at least).
 #
 # Example:
@@ -54,7 +54,7 @@ ARGV.each do |x|
   puts "Uploaded #{x} to #{url}"
 
   # Get the embed link.
-  url = "#{url}/#{ARGV[0].split('/').last}"
+  # url = "#{url}/#{ARGV[0].split('/').last}"
   urls << url
 end
 
