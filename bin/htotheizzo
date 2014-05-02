@@ -22,7 +22,7 @@ then
             pip_packages=( virtualenv matplotlib ipython numpy scipy scikit-learn pandas patsy statsmodels ggplot yhat )
             for pip_package in "${pip_packages[@]}" 
             do
-                sudo pip install --upgrade "${pip_package}"
+                pip install --upgrade "${pip_package}"
             done
             sudo rm -rf tmp
             echo "htotheizzo is complete, you got 99 problems but updates ain't one"
