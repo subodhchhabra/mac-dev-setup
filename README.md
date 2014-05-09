@@ -21,6 +21,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Python](#python)
 - [IPython](#ipython)
 - [Numpy, Scipy, matplotlib, and scikit-learn](#numpy-scipy-matplotlib-and-scikit-learn)
+- [pandas](#pandas)
 - [Python Virtualenv](#python-virtualenv)
 - [R](#r)
 - [Node.js](#nodejs)
@@ -95,7 +96,7 @@ Open an new terminal tab with **Cmd+T** (you should also close the old one), the
 ```bash
 $ brew doctor
 ```
-    
+
 ### Usage
 
 To install a package (or **Formula** in Homebrew vocabulary) simply type:
@@ -109,7 +110,7 @@ To update Homebrew's directory of formulae, run:
 ```bash
 $ brew update
 ```
-    
+
 **Note**: I've seen that command fail sometimes because of a bug. If that ever happens, run the following (when you have Git installed):
 
 ```bash
@@ -123,13 +124,13 @@ To see if any of your packages need to be updated:
 ```bash
 $ brew outdated
 ```
-    
+
 To update a package:
 
 ```bash
 $ brew upgrade <formula>
 ```
-        
+
 Homebrew keeps older versions of packages installed, in case you want to roll back. That rarely is necessary, so you can do some cleanup to get rid of those old versions:
 
 ```bash
@@ -260,7 +261,7 @@ $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.exports
 $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.functions
 $ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.inputrc
 ```
-    
+
 At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Jess's MacBook Pro" to just "Jess-MacBook-Pro", so it shows up as `Jess-MacBook-Pro` in the terminal.
 
 Now we have a terminal we can work with!
@@ -299,13 +300,13 @@ What's a developer without [Git](http://git-scm.com/)? To install, simply run:
 ```bash
 $ brew install git
 ```
-    
+
 When done, to test that it installed fine you can run:
 
 ```bash
 $ git --version
 ```
-    
+
 And `$ which git` should output `/usr/local/bin/git`.
 
 Let's set up some basic configuration. Download the [.gitconfig](/mathiasbynens/dotfiles/blob/master/.gitconfig) file to your home directory:
@@ -331,7 +332,7 @@ To push code to your GitHub repositories, we're going to use the recommended HTT
 ```bash
 $ git config --global credential.helper osxkeychain
 ```
-    
+
 **Note**: On a Mac, it is important to remember to add `.DS_Store` (a hidden OS X system file that's put in folders) to your `.gitignore` files. You can take a look at this repository's [.gitignore](/nicolahery/mac-dev-setup/blob/master/.gitignore) file for inspiration.
 
 ### Make git logs pretty
@@ -342,7 +343,7 @@ Type into terminal:
 ```bash
 $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
-    
+
 Running ```git lg``` shows the pretty log and ```git lg -p``` shows the lines that changed.
 
 
@@ -406,11 +407,11 @@ First of all you’ll need a way to enter local DNS entries – yoursite.dev, te
 
     127.0.0.1             localhost
     255.255.255.255       broadcasthost
-    ::1                   localhost 
+    ::1                   localhost
     fe80::1%lo0           localhost
     127.0.0.1             jess.dev
     127.0.0.1             blog-project.dev
-    
+
 Next create the virtual hosts in ```/etc/apache2/extra/httpd-vhosts.conf```:
 
     NameVirtualHost *:80
@@ -422,13 +423,13 @@ Next create the virtual hosts in ```/etc/apache2/extra/httpd-vhosts.conf```:
         ServerName blog-project.dev
         DocumentRoot "/Volumes/Master/macinator/Sites/blog-project"
     </VirtualHost>
-    
+
 Restart Apache ```sudo apachectl restart``` and you are good to go.
 
 ### Better Directory Theme
-I like to swap out the default Apache directory listing with something a bit prettier. 
+I like to swap out the default Apache directory listing with something a bit prettier.
 
-Be sure you have `mod_autoindex` loaded. 
+Be sure you have `mod_autoindex` loaded.
 
 Add the contents of directory-theme repo to the root folder of your localhost (ex. Sites)
 
@@ -451,7 +452,7 @@ The following command will install Python 2.7 and any dependencies required (it 
 ```bash
 $ brew install python
 ```
-    
+
 When finished, you should get a summary in the terminal. Running `$ which python` should output `/usr/local/bin/python`.
 
 It also installed [Pip]() (and its dependency [Distribute]()), which is the package manager for Python. Let's upgrade them both:
@@ -459,16 +460,16 @@ It also installed [Pip]() (and its dependency [Distribute]()), which is the pack
 ```bash
 $ pip install --upgrade pip
 ```
-    
+
 Executable scripts from Python packages you install will be put in `/usr/local/share/python`, so let's add it to the `$PATH`.
-    
+
 And add these lines to `.bash_profile`:
 
 ```bash
 PATH=/usr/local/share/python:$PATH
 export PATH
 ```
-    
+
 Save the file and open a new terminal to take the new `$PATH` into account (everytime you open a terminal, `.bash_profile` gets loaded).
 
 ### Pip Usage
@@ -484,13 +485,13 @@ To upgrade a package:
 ```bash
 $ pip install --upgrade <package>
 ```
-        
+
 To see what's installed:
 
 ```bash
 $ pip freeze
 ```
-    
+
 To uninstall a package:
 
 ```bash
@@ -511,7 +512,7 @@ $ brew update # Always good to do
 $ brew install zeromq # Necessary for pyzmq
 $ brew install pyqt # Necessary for the qtconsole
 ```
-    
+
 It may take a few minutes to build these.
 
 Once it's done, we can install IPython with all the available options:
@@ -527,19 +528,19 @@ You can launch IPython from the command line with `$ ipython`, but what's more i
 ```bash
 $ ipython qtconsole
 ```
-    
+
 You can also customize the font it uses:
 
 ```bash
 $ ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13
 ```
-    
+
 And since I'm lazy and I don't want to type or copy & paste that all the time, I'm going to create an alias for it. Create a `.extra` text file in your home directory with `$ subl ~/.extra` (I've set up `.bash_profile` to load `.extra`), and add the following line:
 
 ```bash
 alias ipy='ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13'
 ```
-    
+
 Open a fresh terminal. Now when you run `$ ipy`, it will launch the QT Console with your configured options.
 
 To use the in-line Matplotlib functionality (nice for scientific computing), run:
@@ -553,7 +554,7 @@ To be able to run inline videos install (this takes about 2 minutes to install):
 ```bash
 $ brew install ffmpeg
 ```
-    
+
 If you are getting an error message when running iPython with the following:
 > Python History requires SQLite, your history will not be saved.
 
@@ -568,13 +569,13 @@ First, grab the special formulae (which are not part of Homebrew core):
 ```bash
 $ brew tap homebrew/science
 ```
-    
+
 Then, install the `gfortran` dependency which we will need to build the libraries (this takes about 5 minutes to install):
 
 ```bash
 $ brew install gfortran
 ```
-    
+
 You can install Numpy with:
 
 ```bash
@@ -598,7 +599,7 @@ You can install Scipy with:
 ```bash
 $ pip install scipy
 ```
-    
+
 Test your Scipy installation:
 
 ```bash
@@ -616,7 +617,7 @@ Then install matplotlib
 ```bash
 $ pip install matplotlib
 ```
-    
+
 (All three of these may take a few minutes to download.)
 After installing matplotlib you may get an error, `* The following required packages can not be built: * freetype`, if you do, you can resolve it by installing the `freetype` dependency:
 
@@ -634,6 +635,29 @@ Then install scikit-learn:
 
 ```bash
 $ pip install -U scikit-learn
+```
+
+### pandas
+
+[pandas](http://pandas.pydata.org/) is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.
+
+#### Install
+
+```bash
+$ pip install pandas
+```
+
+#### pandasjson Install
+
+Easily convert to and from JSON for use with pandas.
+
+
+```bash
+$ git clone https://github.com/pydata/pandasjson
+$ cd pandasjson
+$ pip install .
+$ cd ../
+$ rm -rf pandasjson
 ```
 
 
@@ -659,7 +683,7 @@ Let's say you have a project in a directory called `myproject`. To set up virtua
 $ cd myproject/
 $ virtualenv venv --distribute
 ```
-    
+
 If you want your virtualenv to also inherit globally installed packages (like IPython or Numpy mentioned above), use:
 
 ```bash
@@ -671,7 +695,7 @@ These commands create a `venv` subdirectory in your project where everything is 
 ```bash
 $ source venv/bin/activate
 ```
-    
+
 You should see a `(venv)` appear at the beginning of your terminal prompt indicating that you are working inside the virtualenv. Now when you install something:
 
 ```bash
@@ -745,7 +769,7 @@ Install [Node.js](http://nodejs.org/) with Homebrew:
 $ brew update
 $ brew install node
 ```
-    
+
 The formula also installs the [npm](https://npmjs.org/) package manager. However, as suggested by the Homebrew output, we need to add `/usr/local/share/npm/bin` to our path so that npm-installed modules with executables will have them picked up.
 
 To do so, add this line to your `~/.bash_profile` file, before the `export PATH` line:
@@ -753,7 +777,7 @@ To do so, add this line to your `~/.bash_profile` file, before the `export PATH`
 ```bash
 PATH=/usr/local/share/npm/bin:$PATH
 ```
-        
+
 Open a new terminal for the `$PATH` changes to take effect.
 
 **NOTE: may not be necessary** We also need to tell npm where to find the Xcode Command Line Tools, by running:
@@ -820,7 +844,7 @@ When installing Ruby, best practice is to use [RVM](https://rvm.io/) (Ruby Versi
 ```bash
 $ curl -L https://get.rvm.io | bash -s stable --ruby
 ```
-    
+
 When it is done, both RVM and a fresh version of Ruby 2.0 are installed. The following line was also automatically added to your `.bash_profile`:
 
 ```bash
@@ -834,7 +858,7 @@ After that, start a new terminal and run:
 ```bash
 $ type rvm | head -1
 ```
-    
+
 You should get the output `rvm is a function`.
 
 ### Usage
@@ -870,49 +894,49 @@ To update RVM itself, use:
 ```bash
 $ rvm get stable
 ```
-    
+
 [RubyGems](http://rubygems.org/), the Ruby package manager, was also installed:
 
 ```bash
 $ which gem
 ```
-    
+
 Update to its latest version with:
 
 ```bash
 $ gem update --system
 ```
-    
+
 To install a "gem" (Ruby package), run:
 
 ```bash
 $ gem install <gemname>
 ```
-        
+
 To install without generating the documentation for each gem (faster):
 
 ```bash
 $ gem install <gemname> --no-document
 ```
-        
+
 To see what gems you have installed:
 
 ```bash
 $ gem list
 ```
-    
+
 To check if any installed gems are outdated:
 
 ```bash
 $ gem outdated
 ```
-    
+
 To update all gems or a particular gem:
 
 ```bash
 $ gem update [<gemname>]
 ```
-    
+
 RubyGems keeps old versions of gems, so feel free to do come cleaning after updating:
 
 ```bash
@@ -965,13 +989,13 @@ Assuming that you have an account (sign up if you don't), let's install the [Her
 ```bash
 $ brew install heroku-toolbelt
 ```
-    
+
 The formula might not have the latest version of the Heroku Client, which is updated pretty often. Let's update it now:
 
 ```bash
 $ heroku update
 ```
-    
+
 Don't be afraid to run `heroku update` every now and then to always have the most recent version.
 
 ### Usage
@@ -981,7 +1005,7 @@ Login to your Heroku account using your email and password:
 ```bash
 $ heroku login
 ```
-    
+
 If this is a new account, and since you don't already have a public **SSH key** in your `~/.ssh` directory, it will offer to create one for you. Say yes! It will also upload the key to your Heroku account, which will allow you to deploy apps from this computer.
 
 If it didn't offer create the SSH key for you (i.e. your Heroku account already has SSH keys associated with it), you can do so manually by running:
@@ -990,13 +1014,13 @@ If it didn't offer create the SSH key for you (i.e. your Heroku account already 
 $ mkdir ~/.ssh
 $ ssh-keygen -t rsa
 ```
-     
+
 Keep the default file name and skip the passphrase by just hitting Enter both times. Then, add the key to your Heroku account:
 
 ```bash
 $ heroku keys:add
 ```
-    
+
 Once the key business is done, you're ready to deploy apps! Heroku has a great [Getting Started](https://devcenter.heroku.com/articles/python) guide, so I'll let you refer to that (the one linked here is for Python, but there is one for every popular language). Heroku uses Git to push code for deployment, so make sure your app is under Git version control. A quick cheat sheet (if you've used Heroku before):
 
 ```bash
@@ -1006,7 +1030,7 @@ $ git push heroku master
 $ heroku ps
 $ heroku logs -t
 ```
-    
+
 The [Heroku Dev Center](https://devcenter.heroku.com/) is full of great resources, so be sure to check it out!
 
 ## MongoDB
@@ -1149,25 +1173,25 @@ To start the MySQL server, use the `mysql.server` tool:
 ```bash
 $ mysql.server start
 ```
-    
+
 To stop it when you are done, run:
 
 ```bash
 $ mysql.server stop
 ```
-    
+
 You can see the different commands available for `mysql.server` with:
 
 ```bash
 $ mysql.server --help
 ```
-    
+
 To connect with the command-line client, run:
 
 ```bash
 $ mysql -uroot
 ```
-    
+
 (Use `exit` to quit the MySQL shell.)
 
 **Note**: By default, the MySQL user `root` has no password. It doesn't really matter for a local development database. If you wish to change it though, you can use `$ mysqladmin -u root password 'new-password'`.
@@ -1296,7 +1320,7 @@ Just like the terminal, let's configure our editor a little. Go to **Sublime Tex
     "indent_to_bracket": true
 }
 ```
-    
+
 Feel free to tweak these to your preference. When done, save the file and close it.
 
 I use tab size 2 for everything except Python and Markdown files, where I use tab size 4. If you have a Python and Markdown file handy (or create dummy ones with `$ touch dummy.py`), for each one, open it and go to **Sublime Text 2 > Preferences > Settings - More > Syntax Specific - User** to paste in:
@@ -1313,7 +1337,7 @@ A popular Theme is the [Soda Theme](https://github.com/buymeasoda/soda-theme). T
 
     $ cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
     $ git clone https://github.com/buymeasoda/soda-theme/ "Theme - Soda"
-    
+
 Then go to **Sublime Text 2 > Preferences > Settings - User** and add the following two lines:
 
     "theme": "Soda Dark.sublime-theme",
@@ -1341,6 +1365,6 @@ Let's create a shortcut so we can launch Sublime Text from the command-line:
 Now I can open a file with `$ subl myfile.py` or start a new project in the current directory with `$ subl .`. Pretty cool.
 
 Sublime Text is very extensible. For now we'll leave it like that, we already have a solid installation. To add more in the future, a good place to start would be to install the [Sublime Package Control](http://wbond.net/sublime_packages/package_control/installation).
- 
+
 
 [![Analytics](https://ga-beacon.appspot.com/UA-29404280-16/mac-dev-setup/README.md)](https://github.com/jfrazelle/mac-dev-setup)
