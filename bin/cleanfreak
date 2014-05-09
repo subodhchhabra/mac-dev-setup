@@ -6,7 +6,7 @@ function help () {
     echo "    cleanfreak run                   - make your directories squeaky clean";
     echo ""
     echo "    options to be appended onto cleanfreak run:";
-    echo "          -t                         - run function and clear terminal history";
+    echo "          --hard                     - remove all history files";
 }
 
 if [ $1 ]
@@ -14,29 +14,32 @@ then
     case "$1" in
         run)
             echo "cleanfreak is here to save the day"
-            
-            # remove .DS_Store recursively
-            #echo "cleaning up stupid .DS_Store files, it's pointless but it feels good"
-            #cd ~
-            #sudo find . -name '*.DS_Store' -type f -delete
 
-            # remove vim .swp, .swo, and .pyc files recursively
-            echo "cleaning up vim .swp, .swo, and .pyc files from ~/Dropbox"
-            cd ~/Dropbox
-            sudo find . -name '*.swp' -type f -delete
-            sudo find . -name '*.swo' -type f -delete
-            sudo find . -name '*.pyc' -type f -delete
+            echo "cleaning up vim .swp, .swo, .pyc, & .DS_Store files from ~/"
+            cd ~/
+            files=( "*.swp" "*.swo" "*.pyc" ".DS_Store" )
+            for f in "${files[@]}"
+            do
+                sudo find . -iname "${f}" -type f -delete
+            done
+
+            if [[ -d ".npm/" ]; then
+                echo "cleaning .npm cache"
+                rm -rf .npm/
+            fi
+
+            echo "cleaning stupid logs"
+            sudo rm -rf .*log
         ;;
         *)
             help
         ;;
     esac
     case "$2" in
-        -t | --terminal )
-            # clear terminal history (only for the insane)
-            echo "clearing terminal history"
-            history -c
-        ;; 
+        --hard )
+            echo "clearing all histories"
+            sudo rm -rf .*history*
+        ;;
     esac
 else
     help
