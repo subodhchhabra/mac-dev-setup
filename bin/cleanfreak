@@ -23,7 +23,7 @@ then
                 sudo find . -iname "${f}" -type f -delete
             done
 
-            if [[ -d ".npm/" ]; then
+            if [[ -d ".npm/" ]]; then
                 echo "cleaning .npm cache"
                 rm -rf .npm/
             fi
