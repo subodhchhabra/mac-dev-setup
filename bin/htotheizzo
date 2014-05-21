@@ -19,7 +19,7 @@ then
             sudo gem cleanup
             npm update -g
             heroku update
-            pip_packages=( virtualenv matplotlib ipython numpy scipy scikit-learn pandas awscli yhat )
+            pip_packages=( virtualenv matplotlib ipython numpy scipy scikit-learn pandas awscli yhat patsy ggplot )
             for pip_package in "${pip_packages[@]}"
             do
                 pip install --upgrade "${pip_package}"
