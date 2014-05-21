@@ -2,8 +2,8 @@
 alias pgdown="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias pgup="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 
-# ipython qtconsole
-alias ipy='ipython qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13 --pylab=inline'
+# ipython notebook
+alias ipynb='ipython notebook --pylab=inline'
 
 # python virtualenv
 alias pyvirall='virtualenv venv --system-site-packages && source venv/bin/activate'
@@ -79,6 +79,9 @@ man() {
 
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+
+# Pipe my private key to my clipboard.
+alias prikey="more ~/.ssh/id_rsa | pbcopy | echo '=> Private key copied to pasteboard.'"
 
 # convert manpage to html and open
 function ironman(){
