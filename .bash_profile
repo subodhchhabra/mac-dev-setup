@@ -37,7 +37,11 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-for f in `brew --prefix`/etc/bash_completion.d/; do source `brew --prefix`/etc/bash_completion.d/$f; done
+for f in `brew --prefix`/etc/bash_completion.d/* ; do
+ if [ -f $f ]; then
+    source $f;
+ fi
+done
 
 # node completions
 shopt -s progcomp
