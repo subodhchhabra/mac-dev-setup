@@ -13,16 +13,6 @@ alias pyvir='virtualenv venv && source venv/bin/activate'
 alias hosts='sudo vim /etc/hosts'
 alias vhosts='sudo vim /etc/apache2/extra/httpd-vhosts.conf'
 
-# cleanup aliases
-# remove .DS_Store recursively
-alias rmdss='sudo find . -name '*.DS_Store' -type f -delete'
-# remove .swo recursively
-alias rmswo='sudo find . -name '*.swo' -type f -delete'
-# remove .swp recursively
-alias rmswp='sudo find . -name '*.swp' -type f -delete'
-# remove .pyc recursively
-alias rmpyc='sudo find . -name '*.pyc' -type f -delete'
-
 #copy working directory
 alias cwd='pwd | tr -d "\r\n" | pbcopy'
 
@@ -61,9 +51,6 @@ function repo() {
 # Query Wikipedia via console over DNS
 mwiki() { dig +short txt "$*".wp.dg.cx; }
 
-# Enter the matrix
-alias matrix='COL=$(( $(tput cols) / 2 )); clear; tput setaf 2; while :; do tput cup $((RANDOM%COL)) $((RANDOM%COL)); printf "%$((RANDOM%COL))s" $((RANDOM%2)); done'
-
 # Get colors in manual pages
 man() {
  env \
@@ -82,10 +69,3 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 
 # Pipe my private key to my clipboard.
 alias prikey="more ~/.ssh/id_rsa | pbcopy | echo '=> Private key copied to pasteboard.'"
-
-# convert manpage to html and open
-function ironman(){
- T=$(mktemp -t man)
- man $@ | man2html > $T.html
- open $T.html
-}
