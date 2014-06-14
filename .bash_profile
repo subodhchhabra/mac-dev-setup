@@ -44,12 +44,14 @@ for f in `brew --prefix`/etc/bash_completion.d/* ; do
 done
 
 # node completions
-shopt -s progcomp
-for f in $(command ls ~/.node-completion); do
-  f="$HOME/.node-completion/$f"
-  test -f "$f" && . "$f"
-done
-
+if [[ -d ~/.node-completion ]]; then
+    shopt -s progcomp
+    for f in $(command ls ~/.node-completion); do
+        f="$HOME/.node-completion/$f"
+        test -f "$f" && . "$f"
+    done
+fi
+        
 # source grc for colorizations
 source "`brew --prefix grc`/etc/grc.bashrc"
 
