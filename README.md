@@ -277,9 +277,11 @@ Since we're going to be spending a lot of time in the command-line, let's instal
 Or install using Homebrew Cask:
 
 ```bash
-$ brew tap phinze/homebrew-cask
+$ brew tap caskroom/cask
 $ brew install brew-cask
 $ brew tap caskroom/versions
+# to save apps in /Applications
+$ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 $ brew cask install iterm2-beta
 ```
 
@@ -289,9 +291,13 @@ You can now launch iTerm, through the **Launchpad** for instance.
 
 Let's just quickly change some preferences. In **iTerm > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
 
-In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
+In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Finally, under the section **Window**, change the size to something better, like **Columns: 90** and **Rows: 40**. Under **General**, change to "Reuse previous session's directory".
 
 When done, hit the red "X" in the upper left (saving is automatic in OS X preference panes). Close the window and open a new one to see the size change.
+
+#### Option-Right & Option-Left
+Go to the Keys tab and change **Option Right** to "Send Escape Sequence" **f** & **Option Left** to "Send Escape Sequence" **B**
+
 
 ## Git
 
@@ -564,16 +570,10 @@ If you are getting an error message when running iPython with the following:
 
 [Numpy](http://numpy.scipy.org/), [Scipy](http://www.scipy.org/SciPy), [matplotlib](http://matplotlib.org/), and [scikit-learn](http://scikit-learn.org/stable/) are scientific libraries for Python and are always a little tricky to install from source because they have all these dependencies they need to build correctly. Luckily for us, [Samuel John](http://www.samueljohn.de/) has put together some [Homebrew formulae](https://github.com/samueljohn/homebrew-python) to make it easier to install these Python libraries.
 
-First, grab the special formulae (which are not part of Homebrew core):
+Install the `gfortran` dependency, part of `gcc`, which we will need to build the libraries (this takes about 5 minutes to install):
 
 ```bash
-$ brew tap homebrew/science
-```
-
-Then, install the `gfortran` dependency which we will need to build the libraries (this takes about 5 minutes to install):
-
-```bash
-$ brew install gfortran
+$ brew install gcc
 ```
 
 You can install Numpy with:
@@ -723,7 +723,7 @@ R is a software environment for statistical computing and graphics.
 First install [XQuartz](https://xquartz.macosforge.org/landing/) <-- click the link or use Homebrew Cask:
 
 ```bash
-$ brew tap phinze/homebrew-cask
+$ brew tap caskroom/cask
 $ brew install brew-cask
 $ brew cask install xquartz
 ```
