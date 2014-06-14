@@ -15,11 +15,10 @@ then
             brew upgrade
             brew cleanup -s --force
             brew cask cleanup
-            sudo gem update
-            sudo gem cleanup
+            gem update
+            gem cleanup
             npm update -g
-            heroku update
-            pip_packages=( virtualenv matplotlib ipython numpy scipy scikit-learn pandas awscli yhat patsy ggplot )
+            pip_packages=( virtualenv matplotlib ipython[zmq,notebook,test] Pygments numpy scipy scikit-learn pandas yhat )
             for pip_package in "${pip_packages[@]}"
             do
                 pip install --upgrade "${pip_package}"

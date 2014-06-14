@@ -25,8 +25,31 @@ then
 
             if [[ -d ".npm/" ]]; then
                 echo "cleaning .npm cache"
-                rm -rf .npm/
+                sudo rm -rf .npm/
             fi
+
+            if [[ -d ".node-gyp/" ]]; then
+                echo "cleaning .node-gyp"
+                sudo rm -rf .node-gyp/
+            fi
+
+            if [[ -d ".local/" ]]; then
+                echo "cleaning .local"
+                sudo rm -rf .local/
+            fi
+
+            if [[ -d ".distlib/" ]]; then
+                echo "cleaning .distlib/"
+                sudo rm -rf .distlib/
+            fi
+
+            echo "cleaning all venv/ virtualenv folders"
+            find . -type d -name 'venv' -print
+            find . -type d -name 'venv' -print0 | xargs -0 rm -rf
+
+            echo "cleaning all node_modules/ folders"
+            find . -type d -name 'node_modules' -print
+            find . -type d -name 'node_modules' -print0 | xargs -0 rm -rf
 
             echo "cleaning stupid logs"
             sudo rm -rf .*log
