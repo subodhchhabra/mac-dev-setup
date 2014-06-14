@@ -786,10 +786,10 @@ Open a new terminal for the `$PATH` changes to take effect.
 $ sudo xcode-select -switch /usr/bin
 ```
 
-Node modules are installed locally in the `node_modules` folder of each project by default, but there are at least two that are worth installing globally. Those are [CoffeeScript](http://coffeescript.org/) and [Grunt](http://gruntjs.com/):
+Node modules are installed locally in the `node_modules` folder of each project by default, but there are at least two that are worth installing globally. Those are [Nodemon](https://github.com/remy/nodemon) and [Grunt](http://gruntjs.com/):
 
 ```bash
-$ npm install -g coffee-script
+$ npm install -g nodemon
 $ npm install -g grunt-cli
 ```
 
@@ -965,9 +965,7 @@ export PATH=$PATH:$GOPATH/bin
 Then, installing it is very easy through Homebrew, but first you need Mercurial:
 
 ```bash
-$ brew install mercurial
 $ brew install go
-$ mkdir ~/.go
 ```
 
 ### Go Tour
@@ -1068,7 +1066,7 @@ I'll let you refer to MongoDB's [Getting Started](http://docs.mongodb.org/manual
 
 ### Install
 
-To install Redis, use Homebrew:
+To install PostgreSQL, use Homebrew:
 
 ```bash
 $ brew update
