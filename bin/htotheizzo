@@ -23,7 +23,9 @@ then
             do
                 pip install --upgrade "${pip_package}"
             done
-            sudo rm -rf tmp
+            if [[ -d tmp ]]; then
+                sudo rm -rf tmp
+            fi
             echo "htotheizzo is complete, you got 99 problems but updates ain't one"
         ;;
         *)
