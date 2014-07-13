@@ -18,7 +18,7 @@ then
             gem update
             gem cleanup
             npm update -g
-            pip_packages=( virtualenv matplotlib ipython[zmq,notebook,test] Pygments numpy scipy scikit-learn pandas yhat )
+            pip_packages=( virtualenv matplotlib ipython[zmq,notebook,test] Pygments numpy scipy scikit-learn pandas yhat httpie )
             for pip_package in "${pip_packages[@]}"
             do
                 pip install --upgrade "${pip_package}"
