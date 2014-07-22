@@ -11,6 +11,7 @@ The document assumes you are new to Mac. The steps below were tested on **OS X M
 - [Homebrew](#homebrew)
 - [GNU Core Utilities](#gnu-core-utilities)
 - [Bash v4](#bash-v4)
+- [Bash Completions](#bash-completions)
 - [Generic Colouriser](#generic-colouriser)
 - [Consolas](#consolas)
 - [Beautiful terminal](#beautiful-terminal)
@@ -189,6 +190,14 @@ Enter your password to proceed. Now you can restart Terminal.app and check if th
 
 ```bash
 $ echo $BASH_VERSION
+```
+
+## Bash Completions
+
+All hail the bash completions + `tab`. You can thank me lata!
+
+```bash
+$ brew install bash-completion
 ```
 
 ## Generic Colouriser

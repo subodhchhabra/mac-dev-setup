@@ -33,14 +33,12 @@ complete -W "NSGlobalDomain" defaults
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
 
 # If possible, add tab completion for many more commands
-if [[ -f /etc/bash_completion ]]; then
-    source /etc/bash_completion
+if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
+    . $(brew --prefix)/etc/bash_completion
 fi
-for f in `brew --prefix`/etc/bash_completion.d/* ; do
- if [[ -f $f ]]; then
-    source $f;
- fi
-done
+if [[ -f /etc/bash_completion ]]; then
+    . /etc/bash_completion
+fi
 
 # node completions
 if [[ -d ~/.node-completion ]]; then
@@ -50,7 +48,7 @@ if [[ -d ~/.node-completion ]]; then
         test -f "$f" && . "$f"
     done
 fi
-        
+
 # source grc for colorizations
 if [[ -f "`brew --prefix grc`/etc/grc.bashrc" ]]; then
     source "`brew --prefix grc`/etc/grc.bashrc"
@@ -58,3 +56,4 @@ fi
 
 # print a fortune when the terminal opens
 fortune -a -s | lolcat
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
