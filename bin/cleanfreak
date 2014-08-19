@@ -18,7 +18,7 @@ function clean() {
     done
 
     # clean up dirs
-    local dirs=( ".npm" ".node-gyp" ".distlib" )
+    local dirs=( ".npm" ".node-gyp" ".distlib" "tmp" )
     for d in "${dirs[@]}"
     do
         if [[ -d $d ]]; then
@@ -42,7 +42,7 @@ function clean() {
 
 function main() {
     local arg=$1
-    if [[ ( -z "$arg" ) || ($arg == "help") ]]; then
+    if [[ ! -z "$arg" ]]; then
         help
     else
         clean
