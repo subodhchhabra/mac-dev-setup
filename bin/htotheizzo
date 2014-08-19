@@ -1,37 +1,81 @@
-#!/bin/sh
+#!/bin/bash
 
-function help () {
-    echo "htotheizzo - a simple script that makes updating/upgrading homebrew, gems, node packages, and heroku so much easier"
-    echo ""
-    echo "    htotheizoo run                   - runs the updates";
+function help() {
+    echo "htotheizzo - a simple script that makes updating/upgrading homebrew or apt-get, gems, pip packages, and node packages so much easier"
 }
 
-if [ $1 ]
-then
-    case "$1" in
-        run)
-            echo "htotheizzo is running the update functions"
-            brew update
-            brew upgrade
-            brew cleanup -s --force
-            brew cask cleanup
-            gem update
-            gem cleanup
-            npm update -g
-            pip_packages=( virtualenv matplotlib ipython[zmq,notebook,test] Pygments numpy scipy scikit-learn pandas yhat httpie )
-            for pip_package in "${pip_packages[@]}"
-            do
-                pip install --upgrade "${pip_package}"
-            done
-            if [[ -d tmp ]]; then
-                sudo rm -rf tmp
-            fi
-            echo "htotheizzo is complete, you got 99 problems but updates ain't one"
-        ;;
-        *)
-            help
-        ;;
-    esac
-else
-    help
-fi
+function update_linux() {
+    apt-get -y update
+    apt-get -y upgrade
+    apt-get -y autoremove
+    apt-get -y autoclean
+    apt-get -y clean
+}
+
+function update_homebrew() {
+    brew update
+    brew upgrade
+    brew cleanup -s --force
+    brew cask cleanup
+}
+
+function update() {
+    echo "htotheizzo is running the update functions"
+
+    # detect the OS for the update functions
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        echo "Hey there Linux user. You rule."
+
+        # on linux, make sure they are the super user
+        if [ "$UID" -ne 0 ]; then
+            echo "Please run as root"
+            exit 1
+        fi
+
+        # update
+        update_linux;
+
+        local pip_packages=( httpie )
+
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "Hey there Mac user. At least it's not Windows."
+
+        # update
+        update_homebrew;
+
+        local pip_packages=( virtualenv matplotlib ipython[zmq,notebook,test] Pygments numpy scipy scikit-learn pandas yhat httpie )
+
+    else
+        echo "We don't have update functions for OS: ${OSTYPE}"
+        echo "Moving on..."
+    fi
+
+    echo "Updating ruby gems..."
+    gem update
+    gem cleanup
+
+    echo "Updating npm..."
+    npm update -g
+
+    echo "Updating pip packages..."
+    for pip_package in "${pip_packages[@]}"; do
+        pip install --upgrade "${pip_package}"
+    done
+
+    if [[ -d tmp ]]; then
+        rm -rf tmp
+    fi
+
+    echo "htotheizzo is complete, you got 99 problems but updates ain't one"
+}
+
+function main() {
+    local arg=$1
+    if [[ ! -z "$arg" ]]; then
+        help
+    else
+        update
+    fi
+}
+
+main $@
