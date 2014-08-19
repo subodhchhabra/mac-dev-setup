@@ -1,69 +1,52 @@
-#!/bin/sh
+#!/bin/bash
 
-function help () {
+function help() {
     echo "cleanfreak - Are you ocd? Do you hate having files that are automatically generated, do nothing, and yet they keep you up at night. Then this script is for you. We should probably be friends."
-    echo ""
-    echo "    cleanfreak run                   - make your directories squeaky clean";
-    echo ""
-    echo "    options to be appended onto cleanfreak run:";
-    echo "          --hard                     - remove all history files";
 }
 
-if [ $1 ]
-then
-    case "$1" in
-        run)
-            echo "cleanfreak is here to save the day"
+function clean() {
+    echo "cleanfreak is here to save the day"
 
-            echo "cleaning up vim .swp, .swo, .pyc, & .DS_Store files from ~/"
-            cd ~/
-            files=( "*.swp" "*.swo" "*.pyc" ".DS_Store" )
-            for f in "${files[@]}"
-            do
-                sudo find . -iname "${f}" -type f -delete
-            done
+    cd ~
 
-            if [[ -d ".npm/" ]]; then
-                echo "cleaning .npm cache"
-                sudo rm -rf .npm/
-            fi
+    # clean up files
+    echo "cleaning up vim .swp, .swo, .pyc, & .DS_Store files from ~/"
+    local files=( "*.swp" "*.swo" "*.pyc" ".DS_Store" )
+    for f in "${files[@]}"
+    do
+        sudo find . -iname "${f}" -type f -delete
+    done
 
-            if [[ -d ".node-gyp/" ]]; then
-                echo "cleaning .node-gyp"
-                sudo rm -rf .node-gyp/
-            fi
+    # clean up dirs
+    local dirs=( ".npm" ".node-gyp" ".distlib" )
+    for d in "${dirs[@]}"
+    do
+        if [[ -d $d ]]; then
+            echo "cleaning ${d}/"
+            sudo rm -rf $d
+        fi
+    done
 
-            if [[ -d ".local/" ]]; then
-                echo "cleaning .local"
-                sudo rm -rf .local/
-            fi
+    # cleanup app shit
+    local app_dirs=( "venv" "node_modules" )
+    for ad in "${app_dirs[@]}"
+    do
+        echo "cleaning all ${ad}/ virtualenv folders"
+        find . -type d -name $ad -print
+        find . -type d -name $ad -print0 | xargs -0 rm -rf
+    done
 
-            if [[ -d ".distlib/" ]]; then
-                echo "cleaning .distlib/"
-                sudo rm -rf .distlib/
-            fi
+    echo "cleaning stupid logs"
+    sudo rm -rf .*log
+}
 
-            echo "cleaning all venv/ virtualenv folders"
-            find . -type d -name 'venv' -print
-            find . -type d -name 'venv' -print0 | xargs -0 rm -rf
+function main() {
+    local arg=$1
+    if [[ ( -z "$arg" ) || ($arg == "help") ]]; then
+        help
+    else
+        clean
+    fi
+}
 
-            echo "cleaning all node_modules/ folders"
-            find . -type d -name 'node_modules' -print
-            find . -type d -name 'node_modules' -print0 | xargs -0 rm -rf
-
-            echo "cleaning stupid logs"
-            sudo rm -rf .*log
-        ;;
-        *)
-            help
-        ;;
-    esac
-    case "$2" in
-        --hard )
-            echo "clearing all histories"
-            sudo rm -rf .*history*
-        ;;
-    esac
-else
-    help
-fi
+main $@
