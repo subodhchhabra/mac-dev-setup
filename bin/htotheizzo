@@ -35,7 +35,7 @@ function update() {
         # update
         update_linux;
 
-        local pip_packages=( httpie )
+        local pip_packages=( httpie awscli )
 
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         echo "Hey there Mac user. At least it's not Windows."
