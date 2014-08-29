@@ -20,6 +20,8 @@ function update_homebrew() {
 }
 
 function update() {
+    local pip_packages=( virtualenv Pygments httpie awscli )
+
     echo "htotheizzo is running the update functions"
 
     # detect the OS for the update functions
@@ -35,15 +37,11 @@ function update() {
         # update
         update_linux;
 
-        local pip_packages=( httpie awscli )
-
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         echo "Hey there Mac user. At least it's not Windows."
 
         # update
         update_homebrew;
-
-        local pip_packages=( virtualenv matplotlib ipython[zmq,notebook,test] Pygments numpy scipy scikit-learn pandas yhat httpie )
 
     else
         echo "We don't have update functions for OS: ${OSTYPE}"
