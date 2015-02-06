@@ -476,16 +476,7 @@ It also installed [Pip]() (and its dependency [Distribute]()), which is the pack
 $ pip install --upgrade pip
 ```
 
-Executable scripts from Python packages you install will be put in `/usr/local/share/python`, so let's add it to the `$PATH`.
-
-And add these lines to `.bash_profile`:
-
-```bash
-PATH=/usr/local/share/python:$PATH
-export PATH
-```
-
-Save the file and open a new terminal to take the new `$PATH` into account (everytime you open a terminal, `.bash_profile` gets loaded).
+Executable scripts from Python packages you install will be put in `/usr/local/bin`.
 
 ### Pip Usage
 
