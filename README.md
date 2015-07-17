@@ -279,7 +279,7 @@ Thanks to Mathias Bynens for his awesome [dotfiles](https://github.com/mathiasby
 
 ### iTerm2
 
-Also just like we did above for terminal, install the [Solarized](http://ethanschoonover.com/solarized) color scheme.
+Also just like we did above for terminal, install the [Solarized](http://ethanschoonover.com/solarized) color scheme (this time using `iterm2-colors-solarized` instead of `osx-terminal.app-colors-solarized`).
 
 Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/) (the newest version, even if it says "beta release").
 
@@ -385,6 +385,10 @@ $ cp ~/.vim/vimrc.txt ~/.vimrc
 ```
 
 With that, Vim will look a lot better next time you open it!
+
+* If upon firing up vim, you get errors for Pathogen and not being able to find
+  Solarized, read [this](https://github.com/altercation/vim-colors-solarized).
+  It will clear everything right up.
 
 ### Install
 You can optionally install a more recent version of vim.
