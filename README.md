@@ -380,7 +380,7 @@ Install my .vim files by running:
 
 ```bash
 $ cd ~/
-$ git clone --recursive git@github.com:jfrazelle/.vim.git ~/.vim
+$ git clone --recursive https://github.com/jfrazelle/.vim.git ~/.vim
 $ cp ~/.vim/vimrc.txt ~/.vimrc
 ```
 
@@ -454,7 +454,7 @@ Add the contents of directory-theme repo to the root folder of your localhost (e
 
 ```bash
 $ cd ~/Sites/
-$ git clone git@github.com:jfrazelle/directory-theme.git
+$ git clone https://github.com/jfrazelle/directory-theme.git
 $ cp -r directory-theme/* .
 $ rm -rf directory-theme/
 $ mv htaccess-txt.txt .htaccess
