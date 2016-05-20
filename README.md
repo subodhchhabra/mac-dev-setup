@@ -183,7 +183,7 @@ add this line at the end of the list:
 Now, we can run chsh command:
 
 ```bash
-$ chsh -s /usr/local/bin/bash YOUR_COMPUTERS_NAME # ex. for me this was macinator
+$ chsh -s /usr/local/bin/bash YOUR_USER_NAME # ex. for me this was macinator
 ```
 
 Enter your password to proceed. Now you can restart Terminal.app and check if the installation is correct:
@@ -262,13 +262,13 @@ We'll come back to the details of that later, but for now, just download the fil
 
 ```bash
 $ cd ~
-$ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.bash_profile
-$ curl -O https://raw2.github.com/jfrazelle/mac-dev-setup/master/.helpers
-$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.aliases
-$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.bash_prompt
-$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.exports
-$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.functions
-$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.inputrc
+$ curl -O https://raw.githubusercontent.com/jfrazelle/mac-dev-setup/master/.bash_profile
+$ curl -O https://raw.githubusercontent.com/jfrazelle/mac-dev-setup/master/.helpers
+$ curl -O https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.aliases
+$ curl -O https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.bash_prompt
+$ curl -O https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.exports
+$ curl -O https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.functions
+$ curl -O https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.inputrc
 ```
 
 At this point you can also change your computer's name, which shows up in this terminal prompt. If you want to do so, go to **System Preferences** > **Sharing**. For example, I changed mine from "Jess's MacBook Pro" to just "Jess-MacBook-Pro", so it shows up as `Jess-MacBook-Pro` in the terminal.
@@ -279,7 +279,7 @@ Thanks to Mathias Bynens for his awesome [dotfiles](https://github.com/mathiasby
 
 ### iTerm2
 
-Also just like we did above for terminal, install the [Solarized](http://ethanschoonover.com/solarized) color scheme.
+Also just like we did above for terminal, install the [Solarized](http://ethanschoonover.com/solarized) color scheme (this time using `iterm2-colors-solarized` instead of `osx-terminal.app-colors-solarized`).
 
 Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/) (the newest version, even if it says "beta release").
 
@@ -328,7 +328,7 @@ Let's set up some basic configuration. Download the [.gitconfig](/mathiasbynens/
 
 ```bash
 $ cd ~
-$ curl -O https://raw2.github.com/mathiasbynens/dotfiles/master/.gitconfig
+$ curl -O https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.gitconfig
 ```
 
 It will add some color to the `status`, `branch`, and `diff` Git commands, as well as a couple aliases. Feel free to take a look at the contents of the file, and add to it to your liking.
@@ -380,11 +380,15 @@ Install my .vim files by running:
 
 ```bash
 $ cd ~/
-$ git clone --recursive git@github.com:jfrazelle/.vim.git ~/.vim
+$ git clone --recursive https://github.com/jfrazelle/.vim.git ~/.vim
 $ cp ~/.vim/vimrc.txt ~/.vimrc
 ```
 
 With that, Vim will look a lot better next time you open it!
+
+* If upon firing up vim, you get errors for Pathogen and not being able to find
+  Solarized, read [this](https://github.com/altercation/vim-colors-solarized).
+  It will clear everything right up.
 
 ### Install
 You can optionally install a more recent version of vim.
@@ -450,7 +454,7 @@ Add the contents of directory-theme repo to the root folder of your localhost (e
 
 ```bash
 $ cd ~/Sites/
-$ git clone git@github.com:jfrazelle/directory-theme.git
+$ git clone https://github.com/jfrazelle/directory-theme.git
 $ cp -r directory-theme/* .
 $ rm -rf directory-theme/
 $ mv htaccess-txt.txt .htaccess
